@@ -1,5 +1,11 @@
 #! /usr/bin/env bash
 
+print_with_deleted_comments() {
+  sed "
+  /\/\//d
+  " ${1}
+}
+
 in_files=(*.in)
 
 for inf in ${in_files[@]} ; do
@@ -92,9 +98,7 @@ for inf in ${in_files[@]} ; do
   }
   " ${out}
 
-  sed "
-  /\/\//d
-  " ${out} > ${cpp}
+  print_with_deleted_comments ${out} > ${cpp}
 
   #echo "// vim: ft=cpp" >> ${out}
 
@@ -102,6 +106,11 @@ for inf in ${in_files[@]} ; do
   cp temp ${out}
   column -t -s \* -o \* ${cpp} > temp
   cp temp ${cpp}
+
+  echo "CCD"
+  sed "
+    /Tai/d
+  " ${cpp} > $(basename ${cpp} .cpp)_ccd.cpp
 
 done
 
