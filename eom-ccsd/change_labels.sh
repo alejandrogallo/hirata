@@ -90,11 +90,22 @@ for inf in ${in_files[@]} ; do
   }
   " ${out}
 
-  echo "Constants ..."
+  echo "Constants parentheses ..."
   sed -i "
   /\/\// ! {
     s/\[ /( /
     s/\] /) /
+  }
+  " ${out}
+
+  echo "Permutation operator ..."
+  sed -i "
+  /\/\// ! {
+    s/\s\([a-z]\+\)=>/\"\1\"=>/g
+    s/=>\s*\([a-z]\+\)\s*/=>\"\1\"/g
+    s/=>/, /g
+    s/{/(/g
+    s/}/)/g
   }
   " ${out}
 
@@ -114,4 +125,5 @@ for inf in ${in_files[@]} ; do
 
 done
 
-vi +"au BufReadPre,BufReadPost,VimEnter * set ft=cpp" *.out *.cpp
+#vi +"au BufReadPre,BufReadPost,VimEnter * set ft=cpp" *.out *.cpp
+vi +"au BufReadPre,BufReadPost,VimEnter * set ft=cpp" *ccd.cpp
