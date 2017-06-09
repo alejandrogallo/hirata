@@ -118,12 +118,29 @@ for inf in ${in_files[@]} ; do
   column -t -s \* -o \* ${cpp} > temp
   cp temp ${cpp}
 
+  echo "CCSD"
+  mkdir -p ccsd
+  cp ${cpp} ccsd/
+
   echo "CCD"
+  mkdir -p ccd
   sed "
     /Tai/d
-  " ${cpp} > $(basename ${cpp} .cpp)_ccd.cpp
+  " ${cpp} > ccd/$(basename ${cpp} .cpp).cpp
+
+  echo "CCD-EOMD"
+  mkdir -p ccd-eomd
+  sed "
+    /Tai/d
+    /Lai/d
+    /Rai/d
+  " ${cpp} > ccd-eomd/$(basename ${cpp} .cpp).cpp
+
+  echo "Clean up"
+  rm temp
+  rm ${cpp}
 
 done
 
 #vi +"au BufReadPre,BufReadPost,VimEnter * set ft=cpp" *.out *.cpp
-vi +"au BufReadPre,BufReadPost,VimEnter * set ft=cpp" *ccd.cpp
+#vi +"au BufReadPre,BufReadPost,VimEnter * set ft=cpp" *ccd.cpp
