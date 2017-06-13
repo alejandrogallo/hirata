@@ -1,6 +1,6 @@
 ( - 1.0 + 1.0 * P("dcij", "cdij") )     *  Vabij["mdij"]          * Rai["cm"]
 ( + 1.0 - 1.0 * P("cdij", "cdji") )     *  Vabij["cdie"]          * Rai["ej"]
-( - 1.0 + 1.0 * P("cdij", "cdji") )     *  Fai["mi"]              * Rabij["cdmj"]
+( - 1.0 + 1.0 * P("cdij", "cdji") )     *  Fij["mi"]              * Rabij["cdmj"]
 ( - 1.0 + 1.0 * P("dcij", "cdij") )     *  Fab["de"]              * Rabij["ecij"]
 ( + 0.5 )     *  Vabij["mnij"]          * Rabij["cdmn"]
 ( + 1.0 - 1.0 * P("dcij", "cdij") - 1.0 * P("dcij", "dcji") + 1.0 * P("dcij", "cdji") ) *  Vabij["mdif"] * Rabij["fcmj"]
