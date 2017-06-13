@@ -1,5 +1,5 @@
 ( - 1.0 ) *  Fai["ki"]     * Rai["bk"]
-( + 1.0 ) *  Fai["bc"]     * Rai["ci"]
+( + 1.0 ) *  Fab["bc"]     * Rai["ci"]
 ( - 1.0 ) *  Vabij["kbid"] * Rai["dk"]
 ( + 1.0 ) *  Fai["kd"]     * Rabij["dbki"]
 ( + 0.5 ) *  Vabij["klie"] * Rabij["ebkl"]
