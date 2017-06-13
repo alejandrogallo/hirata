@@ -5,12 +5,12 @@
 
 // R2
 //( - 1.0 + 1.0 * P("cdij", "cdji") ) * Labij ["ijcd"] * Fai["mi"] * Rabij["cdmj"] // m -> cdij
-( - 1.0 ) * Labij ["ijcd"] * Fai["mi"] * Rabij["cdmj"] // m -> cdij
-( + 1.0 ) * Labij ["ijcd"] * Fai["mj"] * Rabij["cdmi"] // m -> cdij
+( - 1.0 ) * Labij ["ijcd"] * Fij["mi"] * Rabij["cdmj"] // m -> cdij
+( + 1.0 ) * Labij ["ijcd"] * Fij["mj"] * Rabij["cdmi"] // m -> cdij
 
 //( - 1.0 + 1.0 * P("dcij", "cdij") ) * Labij["ijdc"] * Fai["de"] * Rabij["ecij"] // e -> dcij
-( - 1.0 ) * Labij["ijdc"] * Fai["de"] * Rabij["ecij"] // e -> dcij
-( + 1.0 ) * Labij["ijdc"] * Fai["ce"] * Rabij["edij"] // e -> dcij
+( - 1.0 ) * Labij["ijdc"] * Fab["de"] * Rabij["ecij"] // e -> dcij
+( + 1.0 ) * Labij["ijdc"] * Fab["ce"] * Rabij["edij"] // e -> dcij
 
 //( + 1.0 - 1.0 * P("dcij", "cdij") - 1.0 * P("dcij", "dcji") + 1.0 * P("dcij", "cdji") ) * Labij["ijcd"] * Vabij["mdif"] * Rabij["fcmj"] //mf dcij
 ( + 1.0 ) * Labij["ijcd"] * Vabij["mdif"] * Rabij["fcmj"] //mf dcij
