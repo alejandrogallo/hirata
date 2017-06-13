@@ -1,11 +1,8 @@
 ( - 1.0 ) *  Fij["ki"]     * Rai["bk"]
 ( + 1.0 ) *  Fab["bc"]     * Rai["ci"]
 ( - 1.0 ) *  Vabij["kbid"] * Rai["dk"]
-//( + 1.0 ) *  Fai["kd"]     * Rabij["dbki"]
 ( + 0.5 ) *  Vabij["klie"] * Rabij["ebkl"]
 ( + 0.5 ) *  Vabij["kbde"] * Rabij["deki"]
-//( - 1.0 ) *  Fai["kd"]     * Tai["di"]     * Rai["bk"]
-//( - 1.0 ) *  Fai["kd"]     * Tai["bk"]     * Rai["di"]
 ( - 1.0 ) *  Tai["bk"]     * Vabij["klie"] * Rai["el"]
 ( + 1.0 ) *  Tai["cl"]     * Vabij["lmic"] * Rai["bm"]
 ( - 1.0 ) *  Tai["ci"]     * Vabij["lbce"] * Rai["el"]
@@ -19,3 +16,8 @@
 ( - 1.0 ) *  Tai["ci"]     * Tai["bl"]     * Vabij["lmcf"] * Rai["fm"]
 ( + 1.0 ) *  Tai["ci"]     * Tai["dm"]     * Vabij["mncd"] * Rai["bn"]
 ( + 1.0 ) *  Tai["bk"]     * Tai["dm"]     * Vabij["kmdf"] * Rai["fi"]
+
+// HF
+//( - 1.0 ) *  Fai["kd"]     * Tai["di"]     * Rai["bk"]
+//( - 1.0 ) *  Fai["kd"]     * Tai["bk"]     * Rai["di"]
+//( + 1.0 ) *  Fai["kd"]     * Rabij["dbki"]
