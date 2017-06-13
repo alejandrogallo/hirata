@@ -1,5 +1,5 @@
-( - 1.0 + 1.0 * P("klab", "lkab") )     *  Fai["km"]              * Labij["mlab"] // H22 (m) -> klab
-( - 1.0 + 1.0 * P("klba", "klab") )     *  Fai["eb"]              * Labij["klea"] // H22 (e) -> klba
+( - 1.0 + 1.0 * P("klab", "lkab") )     *  Fij["km"]              * Labij["mlab"] // H22 (m) -> klab
+( - 1.0 + 1.0 * P("klba", "klab") )     *  Fab["eb"]              * Labij["klea"] // H22 (e) -> klba
 ( - 0.5 )     *  Vabij["klmn"]          * Labij["nmab"] // H22 (mn) -> klab
 ( + 1.0 - 1.0 * P("klba", "klab") - 1.0 * P("klba", "lkba") + 1.0 * P("klba", "lkab") ) *  Vabij["kenb"] * Labij["nlea"] // H22 ne -> kbla
 ( - 0.5 )     *  Vabij["efab"]          * Labij["klfe"] // H22 ef -> abkl
