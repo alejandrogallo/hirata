@@ -1,12 +1,12 @@
 
 //R1
 
-( - 1.0 ) *  Fij["ki"]     * Rai["bk"]
-( + 1.0 ) *  Fab["bc"]     * Rai["ci"]
-( - 1.0 ) *  Vabij["kbid"] * Rai["dk"]
-( + 1.0 ) *  Tabij["cbli"] * Vabij["lmcf"] * Rai["fm"]
-( - 0.5 ) *  Tabij["cdmi"] * Vabij["mncd"] * Rai["bn"]
-( - 0.5 ) *  Tabij["cblm"] * Vabij["lmcf"] * Rai["fi"]
+( - 1.0 ) * Lai["ib"] *  Fij["ki"]     * Rai["bk"]
+( + 1.0 ) * Lai["ib"] *  Fab["bc"]     * Rai["ci"]
+( - 1.0 ) * Lai["ib"] *  Vabij["kbid"] * Rai["dk"]
+( + 1.0 ) * Lai["ib"] *  Tabij["cbli"] * Vabij["lmcf"] * Rai["fm"]
+( - 0.5 ) * Lai["ib"] *  Tabij["cdmi"] * Vabij["mncd"] * Rai["bn"]
+( - 0.5 ) * Lai["ib"] *  Tabij["cblm"] * Vabij["lmcf"] * Rai["fi"]
 
 // from eomd
 // R1
@@ -24,48 +24,48 @@
 
 
 //( - 1.0 + 1.0 * P("dcij", "cdij") )     *  Vabij["mdij"]          * Rai["cm"]
-( - 1.0 )     *  Vabij["mdij"]          * Rai["cm"]
-( + 1.0 )     *  Vabij["mcij"]          * Rai["dm"]
+( - 1.0 )     * Labij ["ijcd"] *  Vabij["mdij"]          * Rai["cm"]
+( + 1.0 )     * Labij ["ijcd"] *  Vabij["mcij"]          * Rai["dm"]
 
 //( + 1.0 - 1.0 * P("cdij", "cdji") )     *  Vabij["cdie"]          * Rai["ej"]
-( + 1.0 )     *  Vabij["cdie"]          * Rai["ej"]
-( - 1.0 )     *  Vabij["cdje"]          * Rai["ei"]
+( + 1.0 )     * Labij ["ijcd"] *  Vabij["cdie"]          * Rai["ej"]
+( - 1.0 )     * Labij ["ijcd"] *  Vabij["cdje"]          * Rai["ei"]
 
+// Because of HF not there
 //( - 1.0 + 1.0 * P("dcij", "cdij") )     *  Fai["mf"]              * Tabij["fdij"]       * Rai["cm"]
-( - 1.0 )     *  Fai["mf"]              * Tabij["fdij"]       * Rai["cm"]
-( + 1.0 )     *  Fai["mf"]              * Tabij["fcij"]       * Rai["dm"]
-
+//( - 1.0 )     * Labij ["ijcd"] *  Fai["mf"]              * Tabij["fdij"]       * Rai["cm"]
+//( + 1.0 )     * Labij ["ijcd"] *  Fai["mf"]              * Tabij["fcij"]       * Rai["dm"]
 //( + 1.0 - 1.0 * P("cdij", "cdji") )     *  Fai["mf"]              * Tabij["cdmi"]       * Rai["fj"]
-( + 1.0 )     *  Fai["mf"]              * Tabij["cdmi"]       * Rai["fj"]
-( - 1.0 )     *  Fai["mf"]              * Tabij["cdmj"]       * Rai["fi"]
+//( + 1.0 )     * Labij ["ijcd"] *  Fai["mf"]              * Tabij["cdmi"]       * Rai["fj"]
+//( - 1.0 )     * Labij ["ijcd"] *  Fai["mf"]              * Tabij["cdmj"]       * Rai["fi"]
 
 //( - 1.0 + 1.0 * P("cdji", "cdij") )     *  Tabij["cdmj"]          * Vabij["mnig"]       * Rai["gn"]
-( - 1.0 )     *  Tabij["cdmj"]          * Vabij["mnig"]       * Rai["gn"]
-( - 1.0 )     *  Tabij["cdmj"]          * Vabij["mnig"]       * Rai["gn"]
+( - 1.0 )     * Labij ["ijcd"] *  Tabij["cdmj"]          * Vabij["mnig"]       * Rai["gn"]
+( - 1.0 )     * Labij ["ijcd"] *  Tabij["cdmj"]          * Vabij["mnig"]       * Rai["gn"]
 
 //( + 1.0 - 1.0 * P("dcji", "cdji") - 1.0 * P("dcji", "dcij") + 1.0 * P("dcji", "cdij") ) *  Tabij["ednj"] * Vabij["noie"] * Rai["co"]
-( + 1.0 ) *  Tabij["ednj"] * Vabij["noie"] * Rai["co"]
-( - 1.0 ) *  Tabij["ecnj"] * Vabij["noie"] * Rai["do"]
-( - 1.0 ) *  Tabij["edni"] * Vabij["noje"] * Rai["co"]
-( + 1.0 ) *  Tabij["ecni"] * Vabij["noje"] * Rai["do"]
+( + 1.0 ) * Labij ["ijcd"] *  Tabij["ednj"] * Vabij["noie"] * Rai["co"]
+( - 1.0 ) * Labij ["ijcd"] *  Tabij["ecnj"] * Vabij["noie"] * Rai["do"]
+( - 1.0 ) * Labij ["ijcd"] *  Tabij["edni"] * Vabij["noje"] * Rai["co"]
+( + 1.0 ) * Labij ["ijcd"] *  Tabij["ecni"] * Vabij["noje"] * Rai["do"]
 
 //( + 0.5 - 0.5 * P("cdij", "cdji") )     *  Tabij["cdmn"]          * Vabij["mnig"]       * Rai["gj"]
-( + 0.5 )     *  Tabij["cdmn"]          * Vabij["mnig"]       * Rai["gj"]
-( - 0.5 )     *  Tabij["cdmn"]          * Vabij["mnjg"]       * Rai["gi"]
+( + 0.5 )     * Labij ["ijcd"] *  Tabij["cdmn"]          * Vabij["mnig"]       * Rai["gj"]
+( - 0.5 )     * Labij ["ijcd"] *  Tabij["cdmn"]          * Vabij["mnjg"]       * Rai["gi"]
 
 //( + 1.0 - 1.0 * P("cdij", "dcij") )     *  Tabij["ecij"]          * Vabij["ndeg"]       * Rai["gn"]
-( + 1.0 )     *  Tabij["ecij"]          * Vabij["ndeg"]       * Rai["gn"]
-( - 1.0 )     *  Tabij["edij"]          * Vabij["nceg"]       * Rai["gn"]
+( + 1.0 )     * Labij ["ijcd"] *  Tabij["ecij"]          * Vabij["ndeg"]       * Rai["gn"]
+( - 1.0 )     * Labij ["ijcd"] *  Tabij["edij"]          * Vabij["nceg"]       * Rai["gn"]
 
 //( - 0.5 + 0.5 * P("dcij", "cdij") )     *  Tabij["efij"]          * Vabij["odef"]       * Rai["co"]
-( - 0.5 )     *  Tabij["efij"]          * Vabij["odef"]       * Rai["co"]
-( + 0.5 )     *  Tabij["efij"]          * Vabij["ocef"]       * Rai["do"]
+( - 0.5 )     * Labij ["ijcd"] *  Tabij["efij"]          * Vabij["odef"]       * Rai["co"]
+( + 0.5 )     * Labij ["ijcd"] *  Tabij["efij"]          * Vabij["ocef"]       * Rai["do"]
 
 //( + 1.0 - 1.0 * P("cdij", "dcij") - 1.0 * P("cdij", "cdji") + 1.0 * P("cdij", "dcji") ) *  Tabij["ecni"] * Vabij["ndeg"] * Rai["gj"]
-( + 1.0 ) *  Tabij["ecni"] * Vabij["ndeg"] * Rai["gj"]
-( - 1.0 ) *  Tabij["edni"] * Vabij["nceg"] * Rai["gj"]
-( - 1.0 ) *  Tabij["ecnj"] * Vabij["ndeg"] * Rai["gi"]
-( + 1.0 ) *  Tabij["ednj"] * Vabij["nceg"] * Rai["gi"]
+( + 1.0 ) * Labij ["ijcd"] *  Tabij["ecni"] * Vabij["ndeg"] * Rai["gj"]
+( - 1.0 ) * Labij ["ijcd"] *  Tabij["edni"] * Vabij["nceg"] * Rai["gj"]
+( - 1.0 ) * Labij ["ijcd"] *  Tabij["ecnj"] * Vabij["ndeg"] * Rai["gi"]
+( + 1.0 ) * Labij ["ijcd"] *  Tabij["ednj"] * Vabij["nceg"] * Rai["gi"]
 
 
 
