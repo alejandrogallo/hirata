@@ -13,7 +13,7 @@
 //[ + 1.0 - 1.0 * P( h3 h4 p2 p1 => h3 h4 p1 p2 ) - 1.0 * P( h3 h4 p2 p1 => h4 h3 p2 p1 ) + 1.0 * P( h3 h4 p2 p1 => h4 h3 p1 p2 ) ] * Sum ( p5 h6 )       * v ( h3 p5 h6 p2 ) * y ( h6 h4 p5 p1 )
 ( + 1.0 - 1.0   * P("klba", "klab") - 1.0               * P("klba", "lkba") + 1.0               * P("klba", "lkab") )               *  Viajb["kenb"]      * Labij["nlea"]
 //[ - 0.5 ]     * Sum ( p5 p6 )                         * v ( p5 p6 p1 p2 )                     * y ( h3 h4 p6 p5 )
-( - 0.5 )       *  Vabij["efab"]                        * Labij["klfe"]
+( - 0.5 )       *  Vabcd["efab"]                        * Labij["klfe"]
 //[ - 1.0 + 1.0 * P( h3 h4 p2 p1 => h3 h4 p1 p2 ) ]     * Sum ( p5 h6 )                         * t ( p5 h6 )                       * v ( h3 h4 p5 p2 )   * y ( h6 p1 )
 ( - 1.0 + 1.0   * P("klba", "klab") )                   *  Tai["en"]                            * Vijab["kleb"]                     * Lai["na"]
 //[ + 1.0 - 1.0 * P( h3 h4 p1 p2 => h4 h3 p1 p2 ) ]     * Sum ( p5 h6 )                         * t ( p5 h6 )                       * v ( h6 h3 p1 p2 )   * y ( h4 p5 )
