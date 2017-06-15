@@ -1,5 +1,5 @@
-( - 1.0 )  *  Fij[jk]       * Lai["ka"]
-( + 1.0 )  *  Fab[ca]       * Lai["jc"]
+( - 1.0 )  *  Fij["jk"]     * Lai["ka"]
+( + 1.0 )  *  Fab["ca"]     * Lai["jc"]
 ( - 1.0 )  *  Vabij["jcla"] * Lai["lc"]
 ( - 0.5 )  *  Vabij["jclm"] * Labij["mlca"]
 ( - 0.5 )  *  Vabij["cdma"] * Labij["mjdc"]
