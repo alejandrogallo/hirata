@@ -19,9 +19,9 @@
 //[ + 1.0 ]  * Sum ( p3 h4 h5 )          * t ( p3 h4 )       * v ( h4 h2 h5 p3 ) * y ( h5 p1 )
 ( + 1.0 )    *  Tai["cl"]                * Vijka["ljmc"]     * Lai["ma"]
 //[ - 1.0 ]  * Sum ( p3 h4 p5 )          * t ( p3 h4 )       * v ( h2 p5 p3 p1 ) * y ( h4 p5 )
-( - 1.0 )    *  Tai["cl"]                * Vabij["jeca"]     * Lai["le"]
+( - 1.0 )    *  Tai["cl"]                * Viabc["jeca"]     * Lai["le"]
 //[ + 1.0 ]  * Sum ( p3 h4 p5 )          * t ( p3 h4 )       * v ( h4 p5 p3 p1 ) * y ( h2 p5 )
-( + 1.0 )    *  Tai["cl"]                * Vabij["leca"]     * Lai["je"]
+( + 1.0 )    *  Tai["cl"]                * Viabc["leca"]     * Lai["je"]
 //[ - 1.0 ]  * Sum ( h3 h4 p5 )          * f ( h3 h4 )       * t ( p5 h3 )       * y ( h4 h2 p5 p1 )
 ( - 1.0 )    *  Fij["kl"]                * Tai["ek"]         * Labij["ljea"]
 //[ + 1.0 ]  * Sum ( p3 p4 h5 )          * f ( p3 p4 )       * t ( p4 h5 )       * y ( h5 h2 p3 p1 )
@@ -57,13 +57,13 @@
 //[ - 0.5 ]  * Sum ( p3 p4 h5 h6 h7 )    * t ( p3 p4 h5 h6 ) * v ( h5 h6 h7 p4 ) * y ( h7 h2 p3 p1 )
 ( - 0.5 )    *  Tabij["cdmn"]            * Vijka["mnod"]     * Labij["ojca"]
 //[ - 0.5 ]  * Sum ( p3 p4 h5 h6 p7 )    * t ( p3 p4 h5 h6 ) * v ( h2 p7 p4 p1 ) * y ( h6 h5 p7 p3 )
-( - 0.5 )    *  Tabij["cdmn"]            * Vabij["jgda"]     * Labij["nmgc"]
+( - 0.5 )    *  Tabij["cdmn"]            * Viabc["jgda"]     * Labij["nmgc"]
 //[ - 0.25 ] * Sum ( p3 p4 h5 h6 p7 )    * t ( p3 p4 h5 h6 ) * v ( h2 p7 p3 p4 ) * y ( h6 h5 p7 p1 )
-( - 0.25 )   *  Tabij["cdmn"]            * Vabij["jgcd"]     * Labij["nmga"]
+( - 0.25 )   *  Tabij["cdmn"]            * Viabc["jgcd"]     * Labij["nmga"]
 //[ - 1.0 ]  * Sum ( p3 p4 h5 h6 p7 )    * t ( p3 p4 h5 h6 ) * v ( h6 p7 p4 p1 ) * y ( h5 h2 p7 p3 )
-( - 1.0 )    *  Tabij["cdmn"]            * Vabij["ngda"]     * Labij["mjgc"]
+( - 1.0 )    *  Tabij["cdmn"]            * Viabc["ngda"]     * Labij["mjgc"]
 //[ - 0.5 ]  * Sum ( p3 p4 h5 h6 p7 )    * t ( p3 p4 h5 h6 ) * v ( h6 p7 p3 p4 ) * y ( h5 h2 p7 p1 )
-( - 0.5 )    *  Tabij["cdmn"]            * Vabij["ngcd"]     * Labij["mjga"]
+( - 0.5 )    *  Tabij["cdmn"]            * Viabc["ngcd"]     * Labij["mjga"]
 //[ - 1.0 ]  * Sum ( p3 h4 p5 h6 )       * t ( p3 h4 )       * t ( p5 h6 )       * v ( h6 h2 p3 p1 ) * y ( h4 p5 )
 ( - 1.0 )    *  Tai["cl"]                * Tai["en"]         * Vabij["njca"]     * Lai["le"]
 //[ - 1.0 ]  * Sum ( p3 h4 p5 h6 )       * t ( p3 h4 )       * t ( p5 h6 )       * v ( h6 h2 p5 p3 ) * y ( h4 p1 )
@@ -79,11 +79,11 @@
 //[ + 1.0 ]  * Sum ( p3 h4 p5 h6 h7 )    * t ( p3 h4 )       * t ( p5 h6 )       * v ( h6 h4 h7 p5 ) * y ( h7 h2 p3 p1 )
 ( + 1.0 )    *  Tai["cl"]                * Tai["en"]         * Vijka["nloe"]     * Labij["ojca"]
 //[ + 0.5 ]  * Sum ( p3 h4 p5 h6 p7 )    * t ( p3 h4 )       * t ( p5 h6 )       * v ( h2 p7 p5 p3 ) * y ( h6 h4 p7 p1 )
-( + 0.5 )    *  Tai["cl"]                * Tai["en"]         * Vabij["jgec"]     * Labij["nlga"]
+( + 0.5 )    *  Tai["cl"]                * Tai["en"]         * Viabc["jgec"]     * Labij["nlga"]
 //[ + 1.0 ]  * Sum ( p3 h4 p5 h6 p7 )    * t ( p3 h4 )       * t ( p5 h6 )       * v ( h6 p7 p3 p1 ) * y ( h4 h2 p7 p5 )
-( + 1.0 )    *  Tai["cl"]                * Tai["en"]         * Vabij["ngca"]     * Labij["ljge"]
+( + 1.0 )    *  Tai["cl"]                * Tai["en"]         * Viabc["ngca"]     * Labij["ljge"]
 //[ + 1.0 ]  * Sum ( p3 h4 p5 h6 p7 )    * t ( p3 h4 )       * t ( p5 h6 )       * v ( h6 p7 p5 p3 ) * y ( h4 h2 p7 p1 )
-( + 1.0 )    *  Tai["cl"]                * Tai["en"]         * Vabij["ngec"]     * Labij["ljga"]
+( + 1.0 )    *  Tai["cl"]                * Tai["en"]         * Viabc["ngec"]     * Labij["ljga"]
 //[ - 0.5 ]  * Sum ( p3 p4 h5 h6 p7 h8 ) * t ( p3 p4 h5 h6 ) * t ( p7 h8 )       * v ( h6 h2 p7 p1 ) * y ( h8 h5 p4 p3 )
 ( - 0.5 )    *  Tabij["cdmn"]            * Tai["gp"]         * Vabij["njga"]     * Labij["pmdc"]
 //[ - 1.0 ]  * Sum ( p3 p4 h5 h6 p7 h8 ) * t ( p3 p4 h5 h6 ) * t ( p7 h8 )       * v ( h6 h2 p7 p4 ) * y ( h8 h5 p3 p1 )
