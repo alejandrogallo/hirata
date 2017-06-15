@@ -110,7 +110,7 @@ for inf in ${in_files[@]} ; do
   " ${out}
 
   A="[a-h]"
-  I="[i-o]"
+  I="[i-p]"
   echo "Change Vabij into Vaibj etc..."
   sed -i "
   /\/\// ! {
