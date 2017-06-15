@@ -41,7 +41,7 @@
 
 //( - 1.0 + 1.0 * P("cdji", "cdij") )     *  Tabij["cdmj"]          * Vijka["mnig"]       * Rai["gn"]
 ( - 1.0 )     * Labij ["ijcd"] *  Tabij["cdmj"]          * Vijka["mnig"]       * Rai["gn"]
-( - 1.0 )     * Labij ["ijcd"] *  Tabij["cdmj"]          * Vijka["mnig"]       * Rai["gn"]
+( + 1.0 )     * Labij ["ijcd"] *  Tabij["cdmi"]          * Vijka["mnjg"]       * Rai["gn"]
 
 //( + 1.0 - 1.0 * P("dcji", "cdji") - 1.0 * P("dcji", "dcij") + 1.0 * P("dcji", "cdij") ) *  Tabij["ednj"] * Vijka["noie"] * Rai["co"]
 ( + 1.0 ) * Labij ["ijcd"] *  Tabij["ednj"] * Vijka["noie"] * Rai["co"]
