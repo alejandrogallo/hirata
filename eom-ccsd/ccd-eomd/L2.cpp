@@ -1,5 +1,5 @@
-( - 1.0 + 1.0 * P("klab", "lkab") )     *  Fai["km"]              * Labij["mlab"]
-( - 1.0 + 1.0 * P("klba", "klab") )     *  Fai["eb"]              * Labij["klea"]
+( - 1.0 + 1.0 * P("klab", "lkab") )     *  Fij[km]                * Labij["mlab"]
+( - 1.0 + 1.0 * P("klba", "klab") )     *  Fab[eb]                * Labij["klea"]
 ( - 0.5 )     *  Vabij["klmn"]          * Labij["nmab"]
 ( + 1.0 - 1.0 * P("klba", "klab") - 1.0 * P("klba", "lkba") + 1.0 * P("klba", "lkab") ) *  Vabij["kenb"] * Labij["nlea"]
 ( - 0.5 )     *  Vabij["efab"]          * Labij["klfe"]
