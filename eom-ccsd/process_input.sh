@@ -115,6 +115,8 @@ for inf in ${in_files[@]} ; do
   sed -i "
   /\/\// ! {
     /Vabij/s/Vabij\[\(\"$A$I$A$I\"\)\]/Vaibj[\1]/g;
+    /Vabij/s/Vabij\[\(\"$I$A$I$A\"\)\]/Viajb[\1]/g;
+    /Vabij/s/Vabij\[\(\"$I$I$A$A\"\)\]/Vijab[\1]/g;
     /Vabij/s/Vabij\[\(\"$I$I$I$A\"\)\]/Vijka[\1]/g;
     /Vabij/s/Vabij\[\(\"$A$A$I$A\"\)\]/Vabic[\1]/g;
     /Vabij/s/Vabij\[\(\"$I$A$A$A\"\)\]/Viabc[\1]/g;

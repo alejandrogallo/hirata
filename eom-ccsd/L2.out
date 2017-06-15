@@ -15,11 +15,11 @@
 //[ - 0.5 ]     * Sum ( p5 p6 )                         * v ( p5 p6 p1 p2 )                     * y ( h3 h4 p6 p5 )
 ( - 0.5 )       *  Vabij["efab"]                        * Labij["klfe"]
 //[ - 1.0 + 1.0 * P( h3 h4 p2 p1 => h3 h4 p1 p2 ) ]     * Sum ( p5 h6 )                         * t ( p5 h6 )                       * v ( h3 h4 p5 p2 )   * y ( h6 p1 )
-( - 1.0 + 1.0   * P("klba", "klab") )                   *  Tai["en"]                            * Vabij["kleb"]                     * Lai["na"]
+( - 1.0 + 1.0   * P("klba", "klab") )                   *  Tai["en"]                            * Vijab["kleb"]                     * Lai["na"]
 //[ + 1.0 - 1.0 * P( h3 h4 p1 p2 => h4 h3 p1 p2 ) ]     * Sum ( p5 h6 )                         * t ( p5 h6 )                       * v ( h6 h3 p1 p2 )   * y ( h4 p5 )
-( + 1.0 - 1.0   * P("klab", "lkab") )                   *  Tai["en"]                            * Vabij["nkab"]                     * Lai["le"]
+( + 1.0 - 1.0   * P("klab", "lkab") )                   *  Tai["en"]                            * Vijab["nkab"]                     * Lai["le"]
 //[ - 1.0 + 1.0 * P( h3 h4 p2 p1 => h3 h4 p1 p2 ) + 1.0 * P( h3 h4 p2 p1 => h4 h3 p2 p1 ) - 1.0 * P( h3 h4 p2 p1 => h4 h3 p1 p2 ) ] * Sum ( p5 h6 )       * t ( p5 h6 )       * v ( h6 h3 p5 p2 ) * y ( h4 p1 )
-( - 1.0 + 1.0   * P("klba", "klab") + 1.0               * P("klba", "lkba") - 1.0               * P("klba", "lkab") )               *  Tai["en"]          * Vabij["nkeb"]     * Lai["la"]
+( - 1.0 + 1.0   * P("klba", "klab") + 1.0               * P("klba", "lkba") - 1.0               * P("klba", "lkab") )               *  Tai["en"]          * Vijab["nkeb"]     * Lai["la"]
 //[ - 1.0 + 1.0 * P( h3 h4 p1 p2 => h4 h3 p1 p2 ) ]     * Sum ( p5 h6 )                         * f ( h3 p5 )                       * t ( p5 h6 )         * y ( h6 h4 p1 p2 )
 //( - 1.0 + 1.0 * P("klab", "lkab") )                   *  Fai["ke"]                            * Tai["en"]                         * Labij["nlab"]
 //[ + 1.0 - 1.0 * P( h3 h4 p2 p1 => h3 h4 p1 p2 ) ]     * Sum ( h5 p6 )                         * f ( h5 p2 )                       * t ( p6 h5 )         * y ( h3 h4 p6 p1 )
@@ -37,9 +37,9 @@
 //[ - 1.0 + 1.0 * P( h3 h4 p2 p1 => h3 h4 p1 p2 ) ]     * Sum ( p5 h6 p7 )                      * t ( p5 h6 )                       * v ( h6 p7 p5 p2 )   * y ( h3 h4 p7 p1 )
 ( - 1.0 + 1.0   * P("klba", "klab") )                   *  Tai["en"]                            * Viabc["ngeb"]                     * Labij["klga"]
 //[ + 0.5 - 0.5 * P( h3 h4 p2 p1 => h3 h4 p1 p2 ) ]     * Sum ( p5 p6 h7 h8 )                   * t ( p5 p6 h7 h8 )                 * v ( h3 h4 p6 p2 )   * y ( h8 h7 p5 p1 )
-( + 0.5 - 0.5   * P("klba", "klab") )                   *  Tabij["efop"]                        * Vabij["klfb"]                     * Labij["poea"]
+( + 0.5 - 0.5   * P("klba", "klab") )                   *  Tabij["efop"]                        * Vijab["klfb"]                     * Labij["poea"]
 //[ - 0.25 ]    * Sum ( p5 p6 h7 h8 )                   * t ( p5 p6 h7 h8 )                     * v ( h3 h4 p5 p6 )                 * y ( h8 h7 p1 p2 )
-( - 0.25 )      *  Tabij["efop"]                        * Vabij["klef"]                         * Labij["poab"]
+( - 0.25 )      *  Tabij["efop"]                        * Vijab["klef"]                         * Labij["poab"]
 //[ - 0.5 + 0.5 * P( h3 h4 p1 p2 => h4 h3 p1 p2 ) ]     * Sum ( p5 p6 h7 h8 )                   * t ( p5 p6 h7 h8 )                 * v ( h8 h3 p1 p2 )   * y ( h7 h4 p6 p5 )
 ( - 0.5 + 0.5   * P("klab", "lkab") )                   *  Tabij["efop"]                        * Vabij["pkab"]                     * Labij["olfe"]
 //[ - 1.0 + 1.0 * P( h3 h4 p2 p1 => h3 h4 p1 p2 ) + 1.0 * P( h3 h4 p2 p1 => h4 h3 p2 p1 ) - 1.0 * P( h3 h4 p2 p1 => h4 h3 p1 p2 ) ] * Sum ( p5 p6 h7 h8 ) * t ( p5 p6 h7 h8 ) * v ( h8 h3 p6 p2 ) * y ( h7 h4 p5 p1 )
@@ -51,7 +51,7 @@
 //[ - 0.5 + 0.5 * P( h3 h4 p2 p1 => h3 h4 p1 p2 ) ]     * Sum ( p5 p6 h7 h8 )                   * t ( p5 p6 h7 h8 )                 * v ( h7 h8 p6 p2 )   * y ( h3 h4 p5 p1 )
 ( - 0.5 + 0.5   * P("klba", "klab") )                   *  Tabij["efop"]                        * Vabij["opfb"]                     * Labij["klea"]
 //[ + 0.5 ]     * Sum ( p5 h6 p7 h8 )                   * t ( p5 h6 )                           * t ( p7 h8 )                       * v ( h3 h4 p7 p5 )   * y ( h8 h6 p1 p2 )
-( + 0.5 )       *  Tai["en"]                            * Tai["gp"]                             * Vabij["klge"]                     * Labij["pnab"]
+( + 0.5 )       *  Tai["en"]                            * Tai["gp"]                             * Vijab["klge"]                     * Labij["pnab"]
 //[ + 1.0 - 1.0 * P( h3 h4 p2 p1 => h3 h4 p1 p2 ) - 1.0 * P( h3 h4 p2 p1 => h4 h3 p2 p1 ) + 1.0 * P( h3 h4 p2 p1 => h4 h3 p1 p2 ) ] * Sum ( p5 h6 p7 h8 ) * t ( p5 h6 )       * t ( p7 h8 )       * v ( h8 h3 p5 p2 ) * y ( h6 h4 p7 p1 )
 ( + 1.0 - 1.0   * P("klba", "klab") - 1.0               * P("klba", "lkba") + 1.0               * P("klba", "lkab") )               *  Tai["en"]          * Tai["gp"]         * Vabij["pkeb"]     * Labij["nlga"]
 //[ - 1.0 + 1.0 * P( h3 h4 p1 p2 => h4 h3 p1 p2 ) ]     * Sum ( p5 h6 p7 h8 )                   * t ( p5 h6 )                       * t ( p7 h8 )         * v ( h8 h3 p7 p5 ) * y ( h6 h4 p1 p2 )

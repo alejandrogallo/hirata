@@ -53,19 +53,19 @@
 //[ + 1.0 - 1.0 * P( p3 p4 h1 h2 => p4 p3 h1 h2 ) - 1.0 * P( p3 p4 h1 h2 => p3 p4 h2 h1 ) + 1.0 * P( p3 p4 h1 h2 => p4 p3 h2 h1 ) ] * Sum ( h6 p5 p7 )    * t ( p5 p3 h6 h1 ) * v ( h6 p4 p5 p7 ) * x ( p7 h2 )
 ( + 1.0 - 1.0   * P("cdij", "dcij") - 1.0               * P("cdij", "cdji") + 1.0               * P("cdij", "dcji") )               *  Tabij["ecni"]      * Viabc["ndeg"]     * Rai["gj"]
 //[ + 0.5 - 0.5 * P( p4 p3 h1 h2 => p3 p4 h1 h2 ) ]     * Sum ( h6 h7 p5 p8 )                   * t ( p5 p4 h1 h2 )                 * v ( h6 h7 p5 p8 )   * x ( p8 p3 h6 h7 )
-( + 0.5 - 0.5   * P("dcij", "cdij") )                   *  Tabij["edij"]                        * Vabij["noeh"]                     * Rabij["hcno"]
+( + 0.5 - 0.5   * P("dcij", "cdij") )                   *  Tabij["edij"]                        * Vijab["noeh"]                     * Rabij["hcno"]
 //[ + 0.25 ]    * Sum ( h7 h8 p5 p6 )                   * t ( p5 p6 h1 h2 )                     * v ( h7 h8 p5 p6 )                 * x ( p3 p4 h7 h8 )
 ( + 0.25 )      *  Tabij["efij"]                        * Vabij["opef"]                         * Rabij["cdop"]
 //[ - 0.5 + 0.5 * P( p3 p4 h1 h2 => p3 p4 h2 h1 ) ]     * Sum ( h5 h6 p7 p8 )                   * t ( p3 p4 h5 h1 )                 * v ( h5 h6 p7 p8 )   * x ( p7 p8 h6 h2 )
-( - 0.5 + 0.5   * P("cdij", "cdji") )                   *  Tabij["cdmi"]                        * Vabij["mngh"]                     * Rabij["ghnj"]
+( - 0.5 + 0.5   * P("cdij", "cdji") )                   *  Tabij["cdmi"]                        * Vijab["mngh"]                     * Rabij["ghnj"]
 //[ - 1.0 + 1.0 * P( p4 p3 h1 h2 => p3 p4 h1 h2 ) + 1.0 * P( p4 p3 h1 h2 => p4 p3 h2 h1 ) - 1.0 * P( p4 p3 h1 h2 => p3 p4 h2 h1 ) ] * Sum ( h6 h7 p5 p8 ) * t ( p5 p4 h6 h1 ) * v ( h6 h7 p5 p8 ) * x ( p8 p3 h7 h2 )
-( - 1.0 + 1.0   * P("dcij", "cdij") + 1.0               * P("dcij", "dcji") - 1.0               * P("dcij", "cdji") )               *  Tabij["edni"]      * Vabij["noeh"]     * Rabij["hcoj"]
+( - 1.0 + 1.0   * P("dcij", "cdij") + 1.0               * P("dcij", "dcji") - 1.0               * P("dcij", "cdji") )               *  Tabij["edni"]      * Vijab["noeh"]     * Rabij["hcoj"]
 //[ - 0.5 + 0.5 * P( p3 p4 h1 h2 => p3 p4 h2 h1 ) ]     * Sum ( h7 h8 p5 p6 )                   * t ( p5 p6 h7 h1 )                 * v ( h7 h8 p5 p6 )   * x ( p3 p4 h8 h2 )
 ( - 0.5 + 0.5   * P("cdij", "cdji") )                   *  Tabij["efoi"]                        * Vabij["opef"]                     * Rabij["cdpj"]
 //[ + 0.25 ]    * Sum ( h5 h6 p7 p8 )                   * t ( p3 p4 h5 h6 )                     * v ( h5 h6 p7 p8 )                 * x ( p7 p8 h1 h2 )
-( + 0.25 )      *  Tabij["cdmn"]                        * Vabij["mngh"]                         * Rabij["ghij"]
+( + 0.25 )      *  Tabij["cdmn"]                        * Vijab["mngh"]                         * Rabij["ghij"]
 //[ + 0.5 - 0.5 * P( p4 p3 h1 h2 => p3 p4 h1 h2 ) ]     * Sum ( h6 h7 p5 p8 )                   * t ( p5 p4 h6 h7 )                 * v ( h6 h7 p5 p8 )   * x ( p8 p3 h1 h2 )
-( + 0.5 - 0.5   * P("dcij", "cdij") )                   *  Tabij["edno"]                        * Vabij["noeh"]                     * Rabij["hcij"]
+( + 0.5 - 0.5   * P("dcij", "cdij") )                   *  Tabij["edno"]                        * Vijab["noeh"]                     * Rabij["hcij"]
 //[ - 1.0 + 1.0 * P( p4 p3 h2 h1 => p3 p4 h2 h1 ) + 1.0 * P( p4 p3 h2 h1 => p4 p3 h1 h2 ) - 1.0 * P( p4 p3 h2 h1 => p3 p4 h1 h2 ) ] * Sum ( h6 h7 p5 )    * t ( p5 h2 )       * t ( p4 h6 )       * v ( h6 h7 h1 p5 ) * x ( p3 h7 )
 ( - 1.0 + 1.0   * P("dcji", "cdji") + 1.0               * P("dcji", "dcij") - 1.0               * P("dcji", "cdij") )               *  Tai["ej"]          * Tai["dn"]         * Vijka["noie"]     * Rai["co"]
 //[ + 1.0 - 1.0 * P( p3 p4 h1 h2 => p3 p4 h2 h1 ) ]     * Sum ( h5 h6 p7 )                      * t ( p3 h5 )                       * t ( p4 h6 )         * v ( h5 h6 h1 p7 ) * x ( p7 h2 )
@@ -77,30 +77,30 @@
 //[ + 0.5 ]     * Sum ( h7 h8 p5 p6 )                   * t ( p5 h1 )                           * t ( p6 h2 )                       * v ( h7 h8 p5 p6 )   * x ( p3 p4 h7 h8 )
 ( + 0.5 )       *  Tai["ei"]                            * Tai["fj"]                             * Vabij["opef"]                     * Rabij["cdop"]
 //[ + 1.0 - 1.0 * P( p4 p3 h1 h2 => p3 p4 h1 h2 ) - 1.0 * P( p4 p3 h1 h2 => p4 p3 h2 h1 ) + 1.0 * P( p4 p3 h1 h2 => p3 p4 h2 h1 ) ] * Sum ( h6 h7 p5 p8 ) * t ( p5 h1 )       * t ( p4 h6 )       * v ( h6 h7 p5 p8 ) * x ( p8 p3 h7 h2 )
-( + 1.0 - 1.0   * P("dcij", "cdij") - 1.0               * P("dcij", "dcji") + 1.0               * P("dcij", "cdji") )               *  Tai["ei"]          * Tai["dn"]         * Vabij["noeh"]     * Rabij["hcoj"]
+( + 1.0 - 1.0   * P("dcij", "cdij") - 1.0               * P("dcij", "dcji") + 1.0               * P("dcij", "cdji") )               *  Tai["ei"]          * Tai["dn"]         * Vijab["noeh"]     * Rabij["hcoj"]
 //[ + 1.0 - 1.0 * P( p3 p4 h1 h2 => p3 p4 h2 h1 ) ]     * Sum ( h7 h8 p5 p6 )                   * t ( p5 h1 )                       * t ( p6 h7 )         * v ( h7 h8 p5 p6 ) * x ( p3 p4 h8 h2 )
 ( + 1.0 - 1.0   * P("cdij", "cdji") )                   *  Tai["ei"]                            * Tai["fo"]                         * Vabij["opef"]       * Rabij["cdpj"]
 //[ + 0.5 ]     * Sum ( h5 h6 p7 p8 )                   * t ( p3 h5 )                           * t ( p4 h6 )                       * v ( h5 h6 p7 p8 )   * x ( p7 p8 h1 h2 )
-( + 0.5 )       *  Tai["cm"]                            * Tai["dn"]                             * Vabij["mngh"]                     * Rabij["ghij"]
+( + 0.5 )       *  Tai["cm"]                            * Tai["dn"]                             * Vijab["mngh"]                     * Rabij["ghij"]
 //[ - 1.0 + 1.0 * P( p4 p3 h1 h2 => p3 p4 h1 h2 ) ]     * Sum ( h5 h7 p6 p8 )                   * t ( p4 h5 )                       * t ( p6 h7 )         * v ( h5 h7 p6 p8 ) * x ( p8 p3 h1 h2 )
-( - 1.0 + 1.0   * P("dcij", "cdij") )                   *  Tai["dm"]                            * Tai["fo"]                         * Vabij["mofh"]       * Rabij["hcij"]
+( - 1.0 + 1.0   * P("dcij", "cdij") )                   *  Tai["dm"]                            * Tai["fo"]                         * Vijab["mofh"]       * Rabij["hcij"]
 //[ - 1.0 + 1.0 * P( p3 p4 h2 h1 => p3 p4 h1 h2 ) ]     * Sum ( h5 h7 p6 p8 )                   * t ( p3 p4 h5 h2 )                 * t ( p6 h1 )         * v ( h5 h7 p6 p8 ) * x ( p8 h7 )
-( - 1.0 + 1.0   * P("cdji", "cdij") )                   *  Tabij["cdmj"]                        * Tai["fi"]                         * Vabij["mofh"]       * Rai["ho"]
+( - 1.0 + 1.0   * P("cdji", "cdij") )                   *  Tabij["cdmj"]                        * Tai["fi"]                         * Vijab["mofh"]       * Rai["ho"]
 //[ - 1.0 + 1.0 * P( p4 p3 h2 h1 => p3 p4 h2 h1 ) + 1.0 * P( p4 p3 h2 h1 => p4 p3 h1 h2 ) - 1.0 * P( p4 p3 h2 h1 => p3 p4 h1 h2 ) ] * Sum ( h6 h8 p5 p7 ) * t ( p5 p4 h6 h2 ) * t ( p7 h1 )       * v ( h6 h8 p5 p7 ) * x ( p3 h8 )
 ( - 1.0 + 1.0   * P("dcji", "cdji") + 1.0               * P("dcji", "dcij") - 1.0               * P("dcji", "cdij") )               *  Tabij["ednj"]      * Tai["gi"]         * Vabij["npeg"]     * Rai["cp"]
 //[ + 0.5 - 0.5 * P( p3 p4 h1 h2 => p3 p4 h2 h1 ) ]     * Sum ( h5 h6 p7 p8 )                   * t ( p3 p4 h5 h6 )                 * t ( p7 h1 )         * v ( h5 h6 p7 p8 ) * x ( p8 h2 )
-( + 0.5 - 0.5   * P("cdij", "cdji") )                   *  Tabij["cdmn"]                        * Tai["gi"]                         * Vabij["mngh"]       * Rai["hj"]
+( + 0.5 - 0.5   * P("cdij", "cdji") )                   *  Tabij["cdmn"]                        * Tai["gi"]                         * Vijab["mngh"]       * Rai["hj"]
 //[ + 1.0 - 1.0 * P( p3 p4 h1 h2 => p4 p3 h1 h2 ) ]     * Sum ( h6 h7 p5 p8 )                   * t ( p5 p3 h1 h2 )                 * t ( p4 h6 )         * v ( h6 h7 p5 p8 ) * x ( p8 h7 )
-( + 1.0 - 1.0   * P("cdij", "dcij") )                   *  Tabij["ecij"]                        * Tai["dn"]                         * Vabij["noeh"]       * Rai["ho"]
+( + 1.0 - 1.0   * P("cdij", "dcij") )                   *  Tabij["ecij"]                        * Tai["dn"]                         * Vijab["noeh"]       * Rai["ho"]
 //[ - 0.5 + 0.5 * P( p4 p3 h1 h2 => p3 p4 h1 h2 ) ]     * Sum ( h7 h8 p5 p6 )                   * t ( p5 p6 h1 h2 )                 * t ( p4 h7 )         * v ( h7 h8 p5 p6 ) * x ( p3 h8 )
 ( - 0.5 + 0.5   * P("dcij", "cdij") )                   *  Tabij["efij"]                        * Tai["do"]                         * Vabij["opef"]       * Rai["cp"]
 //[ + 1.0 - 1.0 * P( p4 p3 h1 h2 => p3 p4 h1 h2 ) ]     * Sum ( h7 h8 p5 p6 )                   * t ( p5 p4 h1 h2 )                 * t ( p6 h7 )         * v ( h7 h8 p5 p6 ) * x ( p3 h8 )
 ( + 1.0 - 1.0   * P("dcij", "cdij") )                   *  Tabij["edij"]                        * Tai["fo"]                         * Vabij["opef"]       * Rai["cp"]
 //[ - 1.0 + 1.0 * P( p3 p4 h1 h2 => p4 p3 h1 h2 ) + 1.0 * P( p3 p4 h1 h2 => p3 p4 h2 h1 ) - 1.0 * P( p3 p4 h1 h2 => p4 p3 h2 h1 ) ] * Sum ( h6 h7 p5 p8 ) * t ( p5 p3 h6 h1 ) * t ( p4 h7 )       * v ( h6 h7 p5 p8 ) * x ( p8 h2 )
-( - 1.0 + 1.0   * P("cdij", "dcij") + 1.0               * P("cdij", "cdji") - 1.0               * P("cdij", "dcji") )               *  Tabij["ecni"]      * Tai["do"]         * Vabij["noeh"]     * Rai["hj"]
+( - 1.0 + 1.0   * P("cdij", "dcij") + 1.0               * P("cdij", "cdji") - 1.0               * P("cdij", "dcji") )               *  Tabij["ecni"]      * Tai["do"]         * Vijab["noeh"]     * Rai["hj"]
 //[ - 1.0 + 1.0 * P( p3 p4 h1 h2 => p3 p4 h2 h1 ) ]     * Sum ( h5 h7 p6 p8 )                   * t ( p3 p4 h5 h1 )                 * t ( p6 h7 )         * v ( h5 h7 p6 p8 ) * x ( p8 h2 )
-( - 1.0 + 1.0   * P("cdij", "cdji") )                   *  Tabij["cdmi"]                        * Tai["fo"]                         * Vabij["mofh"]       * Rai["hj"]
+( - 1.0 + 1.0   * P("cdij", "cdji") )                   *  Tabij["cdmi"]                        * Tai["fo"]                         * Vijab["mofh"]       * Rai["hj"]
 //[ - 1.0 + 1.0 * P( p4 p3 h1 h2 => p3 p4 h1 h2 ) ]     * Sum ( h7 h8 p5 p6 )                   * t ( p5 h1 )                       * t ( p6 h2 )         * t ( p4 h7 )       * v ( h7 h8 p5 p6 ) * x ( p3 h8 )
 ( - 1.0 + 1.0   * P("dcij", "cdij") )                   *  Tai["ei"]                            * Tai["fj"]                         * Tai["do"]           * Vabij["opef"]     * Rai["cp"]
 //[ + 1.0 - 1.0 * P( p3 p4 h1 h2 => p3 p4 h2 h1 ) ]     * Sum ( h6 h7 p5 p8 )                   * t ( p5 h1 )                       * t ( p3 h6 )         * t ( p4 h7 )       * v ( h6 h7 p5 p8 ) * x ( p8 h2 )
-( + 1.0 - 1.0   * P("cdij", "cdji") )                   *  Tai["ei"]                            * Tai["cn"]                         * Tai["do"]           * Vabij["noeh"]     * Rai["hj"]
+( + 1.0 - 1.0   * P("cdij", "cdji") )                   *  Tai["ei"]                            * Tai["cn"]                         * Tai["do"]           * Vijab["noeh"]     * Rai["hj"]

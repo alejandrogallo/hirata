@@ -23,20 +23,20 @@
 //[ + 1.0 ] * Sum ( h4 p3 p5 )    * t ( p3 h4 )       * v ( h4 p2 p3 p5 ) * x ( p5 h1 )
 ( + 1.0 )   *  Tai["cl"]          * Viabc["lbce"]     * Rai["ei"]
 //[ + 0.5 ] * Sum ( h4 h5 p3 p6 ) * t ( p3 h1 )       * v ( h4 h5 p3 p6 ) * x ( p6 p2 h4 h5 )
-( + 0.5 )   *  Tai["ci"]          * Vabij["lmcf"]     * Rabij["fblm"]
+( + 0.5 )   *  Tai["ci"]          * Vijab["lmcf"]     * Rabij["fblm"]
 //[ + 0.5 ] * Sum ( h3 h4 p5 p6 ) * t ( p2 h3 )       * v ( h3 h4 p5 p6 ) * x ( p5 p6 h4 h1 )
-( + 0.5 )   *  Tai["bk"]          * Vabij["klef"]     * Rabij["efli"]
+( + 0.5 )   *  Tai["bk"]          * Vijab["klef"]     * Rabij["efli"]
 //[ + 1.0 ] * Sum ( h4 h5 p3 p6 ) * t ( p3 h4 )       * v ( h4 h5 p3 p6 ) * x ( p6 p2 h5 h1 )
-( + 1.0 )   *  Tai["cl"]          * Vabij["lmcf"]     * Rabij["fbmi"]
+( + 1.0 )   *  Tai["cl"]          * Vijab["lmcf"]     * Rabij["fbmi"]
 //[ + 1.0 ] * Sum ( h4 h5 p3 p6 ) * t ( p3 p2 h4 h1 ) * v ( h4 h5 p3 p6 ) * x ( p6 h5 )
-( + 1.0 )   *  Tabij["cbli"]      * Vabij["lmcf"]     * Rai["fm"]
+( + 1.0 )   *  Tabij["cbli"]      * Vijab["lmcf"]     * Rai["fm"]
 //[ - 0.5 ] * Sum ( h5 h6 p3 p4 ) * t ( p3 p4 h5 h1 ) * v ( h5 h6 p3 p4 ) * x ( p2 h6 )
-( - 0.5 )   *  Tabij["cdmi"]      * Vabij["mncd"]     * Rai["bn"]
+( - 0.5 )   *  Tabij["cdmi"]      * Vijab["mncd"]     * Rai["bn"]
 //[ - 0.5 ] * Sum ( h4 h5 p3 p6 ) * t ( p3 p2 h4 h5 ) * v ( h4 h5 p3 p6 ) * x ( p6 h1 )
-( - 0.5 )   *  Tabij["cblm"]      * Vabij["lmcf"]     * Rai["fi"]
+( - 0.5 )   *  Tabij["cblm"]      * Vijab["lmcf"]     * Rai["fi"]
 //[ - 1.0 ] * Sum ( h4 h5 p3 p6 ) * t ( p3 h1 )       * t ( p2 h4 )       * v ( h4 h5 p3 p6 ) * x ( p6 h5 )
-( - 1.0 )   *  Tai["ci"]          * Tai["bl"]         * Vabij["lmcf"]     * Rai["fm"]
+( - 1.0 )   *  Tai["ci"]          * Tai["bl"]         * Vijab["lmcf"]     * Rai["fm"]
 //[ + 1.0 ] * Sum ( h5 h6 p3 p4 ) * t ( p3 h1 )       * t ( p4 h5 )       * v ( h5 h6 p3 p4 ) * x ( p2 h6 )
-( + 1.0 )   *  Tai["ci"]          * Tai["dm"]         * Vabij["mncd"]     * Rai["bn"]
+( + 1.0 )   *  Tai["ci"]          * Tai["dm"]         * Vijab["mncd"]     * Rai["bn"]
 //[ + 1.0 ] * Sum ( h3 h5 p4 p6 ) * t ( p2 h3 )       * t ( p4 h5 )       * v ( h3 h5 p4 p6 ) * x ( p6 h1 )
-( + 1.0 )   *  Tai["bk"]          * Tai["dm"]         * Vabij["kmdf"]     * Rai["fi"]
+( + 1.0 )   *  Tai["bk"]          * Tai["dm"]         * Vijab["kmdf"]     * Rai["fi"]
