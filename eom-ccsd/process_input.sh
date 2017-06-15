@@ -109,6 +109,17 @@ for inf in ${in_files[@]} ; do
   }
   " ${out}
 
+  A="[a-h]"
+  I="[i-o]"
+  echo "Change Vabij into Vaibj etc..."
+  sed -i "
+  /\/\// ! {
+    /Vabij/s/Vabij\[\(\"$A$I$A$I\"\)\]/Vaibj[\1]/g;
+    /Vabij/s/Vabij\[\(\"$I$I$I$A\"\)\]/Vijka[\1]/g;
+    /Vabij/s/Vabij\[\(\"$A$A$I$A\"\)\]/Vabic[\1]/g;
+  }
+  " ${out}
+
   echo "Change Fai into Fij or Fab depending on the indices"
   sed -i "
   /\/\// ! {

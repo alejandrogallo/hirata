@@ -7,7 +7,7 @@
 //[ + 1.0 ] * Sum ( h3 p4 )       * f ( h3 p4 )       * x ( p4 p2 h3 h1 )
 //( + 1.0 ) *  Fai["kd"]          * Rabij["dbki"]
 //[ + 0.5 ] * Sum ( h3 h4 p5 )    * v ( h3 h4 h1 p5 ) * x ( p5 p2 h3 h4 )
-( + 0.5 )   *  Vabij["klie"]      * Rabij["ebkl"]
+( + 0.5 )   *  Vijka["klie"]      * Rabij["ebkl"]
 //[ + 0.5 ] * Sum ( h3 p4 p5 )    * v ( h3 p2 p4 p5 ) * x ( p4 p5 h3 h1 )
 ( + 0.5 )   *  Vabij["kbde"]      * Rabij["deki"]
 //[ - 1.0 ] * Sum ( h3 p4 )       * f ( h3 p4 )       * t ( p4 h1 )       * x ( p2 h3 )
@@ -15,9 +15,9 @@
 //[ - 1.0 ] * Sum ( h3 p4 )       * f ( h3 p4 )       * t ( p2 h3 )       * x ( p4 h1 )
 //( - 1.0 ) *  Fai["kd"]          * Tai["bk"]         * Rai["di"]
 //[ - 1.0 ] * Sum ( h3 h4 p5 )    * t ( p2 h3 )       * v ( h3 h4 h1 p5 ) * x ( p5 h4 )
-( - 1.0 )   *  Tai["bk"]          * Vabij["klie"]     * Rai["el"]
+( - 1.0 )   *  Tai["bk"]          * Vijka["klie"]     * Rai["el"]
 //[ + 1.0 ] * Sum ( h4 h5 p3 )    * t ( p3 h4 )       * v ( h4 h5 h1 p3 ) * x ( p2 h5 )
-( + 1.0 )   *  Tai["cl"]          * Vabij["lmic"]     * Rai["bm"]
+( + 1.0 )   *  Tai["cl"]          * Vijka["lmic"]     * Rai["bm"]
 //[ - 1.0 ] * Sum ( h4 p3 p5 )    * t ( p3 h1 )       * v ( h4 p2 p3 p5 ) * x ( p5 h4 )
 ( - 1.0 )   *  Tai["ci"]          * Vabij["lbce"]     * Rai["el"]
 //[ + 1.0 ] * Sum ( h4 p3 p5 )    * t ( p3 h4 )       * v ( h4 p2 p3 p5 ) * x ( p5 h1 )
