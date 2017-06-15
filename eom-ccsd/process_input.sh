@@ -112,8 +112,8 @@ for inf in ${in_files[@]} ; do
   echo "Change Fai into Fij or Fab depending on the indices"
   sed -i "
   /\/\// ! {
-    /Fai/s/Fai\[\"\([a-h][a-h]\)\"\]/Fab[\1]/g;
-    /Fai/s/Fai\[\"\([i-o][i-o]\)\"\]/Fij[\1]/g;
+    /Fai/s/Fai\[\(\"[a-h][a-h]\"\)\]/Fab[\1]/g;
+    /Fai/s/Fai\[\(\"[i-o][i-o]\"\)\]/Fij[\1]/g;
   }
   " ${out}
 

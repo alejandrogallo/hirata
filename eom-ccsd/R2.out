@@ -3,9 +3,9 @@
 //[ + 1.0 - 1.0 * P( p3 p4 h1 h2 => p3 p4 h2 h1 ) ]     * Sum ( p5 )                            * v ( p3 p4 h1 p5 )                 * x ( p5 h2 )
 ( + 1.0 - 1.0   * P("cdij", "cdji") )                   *  Vabij["cdie"]                        * Rai["ej"]
 //[ - 1.0 + 1.0 * P( p3 p4 h1 h2 => p3 p4 h2 h1 ) ]     * Sum ( h5 )                            * f ( h5 h1 )                       * x ( p3 p4 h5 h2 )
-( - 1.0 + 1.0   * P("cdij", "cdji") )                   *  Fij[mi]                              * Rabij["cdmj"]
+( - 1.0 + 1.0   * P("cdij", "cdji") )                   *  Fij["mi"]                            * Rabij["cdmj"]
 //[ - 1.0 + 1.0 * P( p4 p3 h1 h2 => p3 p4 h1 h2 ) ]     * Sum ( p5 )                            * f ( p4 p5 )                       * x ( p5 p3 h1 h2 )
-( - 1.0 + 1.0   * P("dcij", "cdij") )                   *  Fab[de]                              * Rabij["ecij"]
+( - 1.0 + 1.0   * P("dcij", "cdij") )                   *  Fab["de"]                            * Rabij["ecij"]
 //[ + 0.5 ]     * Sum ( h5 h6 )                         * v ( h5 h6 h1 h2 )                     * x ( p3 p4 h5 h6 )
 ( + 0.5 )       *  Vabij["mnij"]                        * Rabij["cdmn"]
 //[ + 1.0 - 1.0 * P( p4 p3 h1 h2 => p3 p4 h1 h2 ) - 1.0 * P( p4 p3 h1 h2 => p4 p3 h2 h1 ) + 1.0 * P( p4 p3 h1 h2 => p3 p4 h2 h1 ) ] * Sum ( h5 p6 )       * v ( h5 p4 h1 p6 ) * x ( p6 p3 h5 h2 )

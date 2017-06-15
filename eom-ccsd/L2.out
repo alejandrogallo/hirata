@@ -5,9 +5,9 @@
 //[ + 1.0 - 1.0 * P( h3 h4 p1 p2 => h4 h3 p1 p2 ) ]     * Sum ( p5 )                            * v ( h3 p5 p1 p2 )                 * y ( h4 p5 )
 ( + 1.0 - 1.0   * P("klab", "lkab") )                   *  Vabij["keab"]                        * Lai["le"]
 //[ - 1.0 + 1.0 * P( h3 h4 p1 p2 => h4 h3 p1 p2 ) ]     * Sum ( h5 )                            * f ( h3 h5 )                       * y ( h5 h4 p1 p2 )
-( - 1.0 + 1.0   * P("klab", "lkab") )                   *  Fij[km]                              * Labij["mlab"]
+( - 1.0 + 1.0   * P("klab", "lkab") )                   *  Fij["km"]                            * Labij["mlab"]
 //[ - 1.0 + 1.0 * P( h3 h4 p2 p1 => h3 h4 p1 p2 ) ]     * Sum ( p5 )                            * f ( p5 p2 )                       * y ( h3 h4 p5 p1 )
-( - 1.0 + 1.0   * P("klba", "klab") )                   *  Fab[eb]                              * Labij["klea"]
+( - 1.0 + 1.0   * P("klba", "klab") )                   *  Fab["eb"]                            * Labij["klea"]
 //[ - 0.5 ]     * Sum ( h5 h6 )                         * v ( h3 h4 h5 h6 )                     * y ( h6 h5 p1 p2 )
 ( - 0.5 )       *  Vabij["klmn"]                        * Labij["nmab"]
 //[ + 1.0 - 1.0 * P( h3 h4 p2 p1 => h3 h4 p1 p2 ) - 1.0 * P( h3 h4 p2 p1 => h4 h3 p2 p1 ) + 1.0 * P( h3 h4 p2 p1 => h4 h3 p1 p2 ) ] * Sum ( p5 h6 )       * v ( h3 p5 h6 p2 ) * y ( h6 h4 p5 p1 )

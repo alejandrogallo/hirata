@@ -1,7 +1,7 @@
 //[ - 1.0 ] * Sum ( h3 )          * f ( h3 h1 )       * x ( p2 h3 )
-( - 1.0 )   *  Fij[ki]            * Rai["bk"]
+( - 1.0 )   *  Fij["ki"]          * Rai["bk"]
 //[ + 1.0 ] * Sum ( p3 )          * f ( p2 p3 )       * x ( p3 h1 )
-( + 1.0 )   *  Fab[bc]            * Rai["ci"]
+( + 1.0 )   *  Fab["bc"]          * Rai["ci"]
 //[ - 1.0 ] * Sum ( h3 p4 )       * v ( h3 p2 h1 p4 ) * x ( p4 h3 )
 ( - 1.0 )   *  Vabij["kbid"]      * Rai["dk"]
 //[ + 1.0 ] * Sum ( h3 p4 )       * f ( h3 p4 )       * x ( p4 p2 h3 h1 )
