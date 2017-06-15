@@ -3,7 +3,7 @@
 //[ + 1.0 ]  * Sum ( p3 )                * f ( p3 p1 )       * y ( h2 p3 )
 ( + 1.0 )    *  Fab["ca"]                * Lai["jc"]
 //[ - 1.0 ]  * Sum ( p3 h4 )             * v ( h2 p3 h4 p1 ) * y ( h4 p3 )
-( - 1.0 )    *  Vabij["jcla"]            * Lai["lc"]
+( - 1.0 )    *  Viajb["jcla"]            * Lai["lc"]
 //[ + 1.0 ]  * Sum ( p3 h4 )             * f ( p3 h4 )       * y ( h4 h2 p3 p1 )
 //( + 1.0 )  *  Fai["cl"]                * Labij["ljca"]
 //[ - 0.5 ]  * Sum ( p3 h4 h5 )          * v ( h2 p3 h4 h5 ) * y ( h5 h4 p3 p1 )
@@ -29,11 +29,11 @@
 //[ - 0.5 ]  * Sum ( p3 h4 h5 h6 )       * t ( p3 h4 )       * v ( h4 h2 h5 h6 ) * y ( h6 h5 p3 p1 )
 ( - 0.5 )    *  Tai["cl"]                * Vabij["ljmn"]     * Labij["nmca"]
 //[ + 1.0 ]  * Sum ( p3 h4 p5 h6 )       * t ( p3 h4 )       * v ( h2 p5 h6 p3 ) * y ( h6 h4 p5 p1 )
-( + 1.0 )    *  Tai["cl"]                * Vabij["jenc"]     * Labij["nlea"]
+( + 1.0 )    *  Tai["cl"]                * Viajb["jenc"]     * Labij["nlea"]
 //[ + 1.0 ]  * Sum ( p3 h4 p5 h6 )       * t ( p3 h4 )       * v ( h4 p5 h6 p1 ) * y ( h6 h2 p5 p3 )
-( + 1.0 )    *  Tai["cl"]                * Vabij["lena"]     * Labij["njec"]
+( + 1.0 )    *  Tai["cl"]                * Viajb["lena"]     * Labij["njec"]
 //[ - 1.0 ]  * Sum ( p3 h4 p5 h6 )       * t ( p3 h4 )       * v ( h4 p5 h6 p3 ) * y ( h6 h2 p5 p1 )
-( - 1.0 )    *  Tai["cl"]                * Vabij["lenc"]     * Labij["njea"]
+( - 1.0 )    *  Tai["cl"]                * Viajb["lenc"]     * Labij["njea"]
 //[ - 0.5 ]  * Sum ( p3 h4 p5 p6 )       * t ( p3 h4 )       * v ( p5 p6 p3 p1 ) * y ( h4 h2 p6 p5 )
 ( - 0.5 )    *  Tai["cl"]                * Vabij["efca"]     * Labij["ljfe"]
 //[ + 1.0 ]  * Sum ( p3 p4 h5 h6 )       * t ( p3 p4 h5 h6 ) * v ( h6 h2 p4 p1 ) * y ( h5 p3 )
