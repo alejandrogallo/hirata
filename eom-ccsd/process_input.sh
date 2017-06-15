@@ -121,6 +121,7 @@ for inf in ${in_files[@]} ; do
     /Vabij/s/Vabij\[\(\"$A$A$I$A\"\)\]/Vabic[\1]/g;
     /Vabij/s/Vabij\[\(\"$A$A$A$A\"\)\]/Vabcd[\1]/g;
     /Vabij/s/Vabij\[\(\"$I$I$I$I\"\)\]/Vijkl[\1]/g;
+    /Vabij/s/Vabij\[\(\"$I$A$I$I\"\)\]/Viajk[\1]/g;
     /Vabij/s/Vabij\[\(\"$I$A$A$A\"\)\]/Viabc[\1]/g;
   }
   " ${out}
