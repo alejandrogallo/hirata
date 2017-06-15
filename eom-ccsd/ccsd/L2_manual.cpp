@@ -26,8 +26,3 @@
 ( - 1.0 + 1.0 * P("klab", "lkab") )     *  Tai["en"]              * Tai["gp"]           * Vabij["pkge"]  * Labij["nlab"]
 ( + 0.5 )     *  Tai["en"]              * Tai["gp"]               * Vabij["pnab"]       * Labij["klge"]
 ( + 1.0 - 1.0 * P("klba", "klab") )     *  Tai["en"]              * Tai["gp"]           * Vabij["pngb"]  * Labij["klea"]
-
-// HF
-//( - 1.0 + 1.0 * P("klab", "lkab") )     *  Fai["ke"]              * Tai["en"]           * Labij["nlab"]
-//( + 1.0 - 1.0 * P("klba", "klab") )     *  Fai["mb"]              * Tai["fm"]           * Labij["klfa"]
-//( - 1.0 + 1.0 * P("klba", "klab") + 1.0 * P("klba", "lkba") - 1.0 * P("klba", "lkab") ) * Fai["kb"]      * Lai["la"]

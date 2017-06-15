@@ -47,9 +47,3 @@
 ( - 1.0 + 1.0 * P("cdij", "cdji") )     *  Tabij["cdmi"]          * Tai["fo"]           * Vabij["mofh"]  * Rai["hj"]
 ( - 1.0 + 1.0 * P("dcij", "cdij") )     *  Tai["ei"]              * Tai["fj"]           * Tai["do"]      * Vabij["opef"] * Rai["cp"]
 ( + 1.0 - 1.0 * P("cdij", "cdji") )     *  Tai["ei"]              * Tai["cn"]           * Tai["do"]      * Vabij["noeh"] * Rai["hj"]
-
-// HF
-//( - 1.0 + 1.0 * P("dcij", "cdij") )     *  Fai["mf"]              * Tabij["fdij"]       * Rai["cm"]
-//( - 1.0 + 1.0 * P("cdij", "cdji") )     *  Fai["mf"]              * Tai["fi"]           * Rabij["cdmj"]
-//( + 1.0 - 1.0 * P("dcij", "cdij") )     *  Fai["mf"]              * Tai["dm"]           * Rabij["fcij"]
-//( + 1.0 - 1.0 * P("cdij", "cdji") )     *  Fai["mf"]              * Tabij["cdmi"]       * Rai["fj"]

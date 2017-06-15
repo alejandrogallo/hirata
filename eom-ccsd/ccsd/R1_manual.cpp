@@ -16,8 +16,3 @@
 ( - 1.0 ) *  Tai["ci"]     * Tai["bl"]     * Vabij["lmcf"] * Rai["fm"]
 ( + 1.0 ) *  Tai["ci"]     * Tai["dm"]     * Vabij["mncd"] * Rai["bn"]
 ( + 1.0 ) *  Tai["bk"]     * Tai["dm"]     * Vabij["kmdf"] * Rai["fi"]
-
-// HF
-//( - 1.0 ) *  Fai["kd"]     * Tai["di"]     * Rai["bk"]
-//( - 1.0 ) *  Fai["kd"]     * Tai["bk"]     * Rai["di"]
-//( + 1.0 ) *  Fai["kd"]     * Rabij["dbki"]

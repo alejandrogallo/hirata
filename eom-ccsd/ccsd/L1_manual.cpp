@@ -48,12 +48,3 @@
 ( + 0.5 )  *  Tai["cl"]     * Tai["en"]     * Tai["gp"]     * Vabij["pjec"] * Labij["nlga"]
 ( + 0.5 )  *  Tai["cl"]     * Tai["en"]     * Tai["gp"]     * Vabij["pnca"] * Labij["ljge"]
 ( - 1.0 )  *  Tai["cl"]     * Tai["en"]     * Tai["gp"]     * Vabij["pngc"] * Labij["ljea"]
-
-// HF
-//( + 1.0 )  *  Fai["cl"]     * Labij["ljca"]
-//( - 1.0 )  *  Fai["jc"]     * Tai["cl"]     * Lai["la"]
-//( - 1.0 )  *  Fai["ka"]     * Tai["dk"]     * Lai["jd"]
-//( + 0.5 )  *  Fai["jc"]     * Tabij["dcmn"] * Labij["nmda"]
-//( + 0.5 )  *  Fai["ka"]     * Tabij["denk"] * Labij["njed"]
-//( + 1.0 )  *  Fai["kd"]     * Tabij["ednk"] * Labij["njea"]
-//( - 1.0 )  *  Tai["cl"]     * Tai["en"]     * Fai["nc"]     * Labij["ljea"]
