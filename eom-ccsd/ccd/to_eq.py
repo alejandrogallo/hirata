@@ -13,17 +13,13 @@ terms = [
 ]
 
 def permute_indices(index, start_indices, permuted_indices):
+    import string
     assert(not start_indices == permuted_indices)
     assert(len(start_indices) == len(permuted_indices))
     new_index = index
-    seen=""
-    for i in range(len(start_indices)):
-        oi = start_indices[i]
-        ni = permuted_indices[i]
-        if ni in seen:
-            continue
-        seen += oi
-        new_index = new_index.replace(oi, ni)
+    changed=[]
+    trans_table = string.maketrans(start_indices, permuted_indices)
+    new_index = index.translate(trans_table)
     return new_index
 
 def createP(line):
@@ -38,6 +34,7 @@ def createP(line):
     print("# Projectors  : %s"%matches)
     for p in projectors:
         line_without_p = line_without_p.replace(p, "")
+    lines.append(line_without_p)
     print("Line wout proj: %s"%line_without_p)
     for p in projectors:
         prefactor = re.match(r"[-+]?\s*[0-9]*\.?[0-9]*", p).group(0)
@@ -48,8 +45,7 @@ def createP(line):
         print("Prefactor     : %s" % prefactor)
         print("Start index   : %s "%start_indices)
         print("Permuted index: %s "%permuted_indices)
-        print("new_line      : %s" % new_line)
-        indices = re.finditer(r"\"(....)\"", new_line)
+        indices = re.finditer(r"\"([a-z]+)\"", new_line)
         new_indices = []
         for ii in indices:
             index = ii.group(1)
@@ -58,6 +54,11 @@ def createP(line):
             new_index = permute_indices(index, start_indices, permuted_indices)
             print("index         : %s (%s - %s)" % (index, istart, iend))
             print("new_index     : %s " % (new_index))
+            new_line = new_line.replace(index, new_index)
+        new_line = re.sub(r"\s\s\s*", " ", new_line)
+        print("new_line      : %s" % new_line)
+        lines.append(new_line)
+    return lines
 
 for term in terms:
     cpp_origin = term + ".cpp"
@@ -74,12 +75,15 @@ for term in terms:
     fout=cpp_out
     fd=open(fout, "w+")
     for line in lines:
+        line = line.replace("\n", "")
+        fd.write("// %s\n" % line)
         if re.match(r".*P.*", line):
-            createP(line.replace("\n", ""))
-            # fd.write(line)
+            lines = createP(line)
         else:
-            new_line = re.sub(r"\*", "* " + temp_tensor + " *", line, count=1).replace("\n", "")
+            lines = [line]
+        for new_line in lines:
+            new_line = re.sub(r"\*", "* " + temp_tensor + " *", new_line, count=1)
             fd.write('energy[""] += %s;\n' % (new_line))
 
-#vim-run: python % 
 #vim-run: python % && vim *_out.cpp
+#vim-run: python % 
