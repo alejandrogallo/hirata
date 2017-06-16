@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-in=LHR.cpp
+in=${1:-LHR.cpp}
 
 sed "
   s_//.*__;
