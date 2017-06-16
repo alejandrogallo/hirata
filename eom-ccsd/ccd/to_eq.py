@@ -20,12 +20,10 @@ def permute_indices(index, start_indices, permuted_indices):
     for i in range(len(start_indices)):
         oi = start_indices[i]
         ni = permuted_indices[i]
-        if oi in seen:
+        if ni in seen:
             continue
-        seen += ni
-        print(" ".join([oi, "->", ni]))
+        seen += oi
         new_index = new_index.replace(oi, ni)
-        print(new_index)
     return new_index
 
 def createP(line):
