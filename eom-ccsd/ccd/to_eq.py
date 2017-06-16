@@ -12,6 +12,22 @@ terms = [
 "R1", "R2"
 ]
 
+def permute_indices(index, start_indices, permuted_indices):
+    assert(not start_indices == permuted_indices)
+    assert(len(start_indices) == len(permuted_indices))
+    new_index = index
+    seen=""
+    for i in range(len(start_indices)):
+        oi = start_indices[i]
+        ni = permuted_indices[i]
+        if oi in seen:
+            continue
+        seen += ni
+        print(" ".join([oi, "->", ni]))
+        new_index = new_index.replace(oi, ni)
+        print(new_index)
+    return new_index
+
 def createP(line):
     projectors = re.findall(
         r"[-+]?\s*[0-9]*\.?[0-9]*\s*\*?\s*P\(\s*\"....\",\s*\"....\"\s*\)",
@@ -35,21 +51,14 @@ def createP(line):
         print("Start index   : %s "%start_indices)
         print("Permuted index: %s "%permuted_indices)
         print("new_line      : %s" % new_line)
-        assert(not start_indices == permuted_indices)
-        assert(len(start_indices) == len(permuted_indices))
         indices = re.finditer(r"\"(....)\"", new_line)
         new_indices = []
         for ii in indices:
             index = ii.group(1)
             istart = ii.start()
             iend = ii.end()
-            new_index = index
+            new_index = permute_indices(index, start_indices, permuted_indices)
             print("index         : %s (%s - %s)" % (index, istart, iend))
-            for i in range(len(start_indices)):
-                oi = start_indices[i]
-                ni = permuted_indices[i]
-                print(" ".join([oi, "->", ni]))
-                new_index = new_index.replace(oi, ni)
             print("new_index     : %s " % (new_index))
 
 for term in terms:
