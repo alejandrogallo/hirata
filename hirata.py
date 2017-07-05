@@ -45,6 +45,13 @@ class HirataLine(object):
         # If we should translate also the projector operators into some other
         # implementation that we might have at hand
         self.with_projector = False
+        self.parse()
+
+    def parse(self):
+        self.get_free_indices()
+        self.get_summation_indices()
+        self.get_postfactors()
+        self.get_prefactors()
 
     def set_free_indices(self, indices): self.free_indices = indices
     def get_free_indices(self):
@@ -105,6 +112,11 @@ class HirataLine(object):
         :returns: Atoms
         """
         return [self.get_prefactors()] + self.get_postfactors()
+
+    def get_printable_atoms(self):
+        """Get atoms in the form that should be printed according to hirata
+        """
+        return "[ " + "".join(self.get_prefactors()) + " ] * " + " * ".join(self.get_postfactors())
 
     def set_prefactors(self, prefactors): self.prefactors = prefactors
     def get_prefactors(self):
@@ -270,21 +282,35 @@ def main():
     )
 
     parser.add_argument("-o", "--out",
-        help   = "Output file",
+        help   = "Output file (hirata.out)",
+        default = "hirata.cpp",
         action = "store"
     )
 
     # Parse arguments
     args = parser.parse_args()
 
-    process_file(args.file)
+    result_lines = process_file(args.file)
+    fd = open(args.out, "w+")
+    for line in result_lines:
+        fd.write("%s\n" % line)
 
 
 def process_file(file_name):
+    result_lines = []
     logger.info("Processing %s ", file_name)
     fd = open(file_name)
     for line in fd:
+        result_lines.append("// %s" % line.replace("\n", ""))
         h_line = HirataLine(line)
+        cc4s_line = hirata_to_cc4s(h_line)
+        result_lines.append("// %s" % cc4s_line.get_printable_atoms())
+        result_lines.append("// free %s" % cc4s_line.get_free_indices())
+        result_lines.append("// summed %s" % cc4s_line.get_summation_indices())
+        lines = cc4s_to_cpp(cc4s_line)
+        result_lines += lines
+        result_lines.append("")
+    return result_lines
 
 
 if __name__ == "__main__":
