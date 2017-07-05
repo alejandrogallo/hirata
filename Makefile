@@ -3,6 +3,8 @@
 eom-ccd: ## Create eom-ccd equations
 eom-ccsd: ## Create eom-ccsd equations
 
+test:
+	python -m unittest discover tests/
 
 help: ## Prints help for targets with comments
 	@$(or $(AWK),awk) ' \
