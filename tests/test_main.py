@@ -18,6 +18,7 @@ assert h_line.get_free_indices() == " h3 p2 h4 p1"
 assert hirata.get_hp_combination(h_line.get_postfactors()[1]) == "hp"
 
 cc4s_line = hirata.hirata_to_cc4s(h_line)
+lines = hirata.cc4s_to_cpp(cc4s_line)
 
 #######################################################################################################
 
@@ -34,6 +35,7 @@ assert h_line.get_free_indices() == " h3 h4 p2 p1"
 assert hirata.get_hp_combination(h_line.get_postfactors()[1]) == "hhhp"
 
 cc4s_line = hirata.hirata_to_cc4s(h_line)
+lines = hirata.cc4s_to_cpp(cc4s_line)
 
 #####################################################################################
 
@@ -50,4 +52,5 @@ assert h_line.get_free_indices() == " h2 p1"
 assert hirata.get_hp_combination(h_line.get_postfactors()[1]) == "pphh"
 
 cc4s_line = hirata.hirata_to_cc4s(h_line)
+lines = hirata.cc4s_to_cpp(cc4s_line)
 

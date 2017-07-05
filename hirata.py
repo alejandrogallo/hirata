@@ -165,6 +165,29 @@ def translate_tensor_names(atom):
     return atom
 
 
+def permute_indices(index, start_indices, permuted_indices):
+    import string
+    assert(len(start_indices) == len(permuted_indices))
+    new_index = index
+    changed=[]
+    trans_table = string.maketrans(start_indices, permuted_indices)
+    new_index = index.translate(trans_table)
+    return new_index
+
+
+def permute_cc4s_index(atom, start_indices, permuted_indices):
+    # print(atom)
+    ii = re.match(r".*\"(.*)\".*", atom)
+    index = ii.group(1)
+    istart = ii.start()
+    iend = ii.end()
+    new_index = permute_indices(index, start_indices, permuted_indices)
+    # print("index         : %s (%s - %s)" % (index, istart, iend))
+    # print("new_index     : %s " % (new_index))
+    new_line = atom.replace(index, new_index)
+    return new_line
+
+
 def hirata_to_cc4s(hirata_line):
     """Convert a hirata line to cc4s
     """
@@ -203,7 +226,36 @@ def hirata_to_cc4s(hirata_line):
     )
     logger.debug("Free indices= %s", line.get_free_indices())
 
+    logger.debug(" Atoms = %s", line.get_atoms())
+
     return line
+
+
+def cc4s_to_cpp(cc4s_line):
+    """Convert a cc4s line class into cpp code
+    """
+    logger = logging.getLogger("cc4s_to_cpp")
+    result = []
+    result_line = ""
+    for prefactor in cc4s_line.get_prefactors():
+        if not re.match(r".*P.*", prefactor):
+            # Identity
+            start_indices = "a"
+            permuted_indices = "a"
+        else:
+            start_indices = re.match(r".*\((.*)=>.*", prefactor)\
+                .group(1).replace(" ", "")
+            permuted_indices = re.match(r".*=>(.*)\).*", prefactor)\
+                .group(1).replace(" ", "")
+        prefactor_val = re.sub(r"\*\sP.*", "", prefactor)
+        logger.debug("Start indices = %s", start_indices)
+        logger.debug("Permuted indices = %s", permuted_indices)
+        logger.debug("Prefactor value = %s", prefactor_val)
+        result_line = "( %s )" % prefactor_val
+        for postfactor in cc4s_line.get_postfactors():
+            result_line += " * %s" % permute_cc4s_index(postfactor, start_indices, permuted_indices)
+        result.append(result_line)
+    return result
 
 
 def main():
