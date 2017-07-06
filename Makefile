@@ -11,7 +11,18 @@ $(patsubst %.in,%.cpp,$(eom_ccsd_SOURCES)) \
 $(patsubst %.in,%-fock.cpp,$(eom_ccsd_SOURCES)) \
 $(patsubst %.in,%-uncomment-fock.cpp,$(eom_ccsd_SOURCES))
 
-#eom-ccd: ## Create eom-ccd equations
+eom_ccd_SOURCES = $(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_SOURCES))
+eom_ccd_TARGETS = \
+$(eom_ccd_SOURCES) \
+$(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_TARGETS)) \
+
+$(eom_ccd_SOURCES): $(eom_ccsd_SOURCES)
+	@echo Creating $@ from $<
+	@mkdir -p $(dir $@)
+	sed "/t\s*(\s*[ph][0-9]\s+[ph][0-9]\s*)/d" $< > $@
+
+eom-ccd: $(eom_ccd_TARGETS) ## Create eom-ccd equations
+
 eom-ccsd: $(eom_ccsd_TARGETS) ## Create eom-ccsd equations
 
 
@@ -45,3 +56,12 @@ help: ## Prints help for targets with comments
 
 clean:
 	git clean -xf
+
+# This is used for printing defined variables from Some other scripts. For
+# instance if you want to know the value of the PDF_VIEWER defined in the
+# Makefile, then you would do
+#    make print-PDF_VIEWER
+# and this would output PDF_VIEWER=mupdf for instance.
+FORCE:
+print-%:
+	@echo '$*=$($*)'
