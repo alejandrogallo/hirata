@@ -37,3 +37,5 @@ help: ## Prints help for targets with comments
 		};' \
 		$(MAKEFILE_LIST)
 
+clean:
+	git clean -xf
