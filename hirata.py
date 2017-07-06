@@ -311,11 +311,22 @@ def main():
         fd.write("%s\n" % line)
 
 
+def get_tensor_name_with_indices(name, hp_partition, indices):
+    """For example it should do
+    T , abij, klbc -> Tabij["bclk"]
+    T , abcj, klbc -> error because klbc is not pphh or any combination
+    :returns: String containing the tensor expression
+    """
+    pass
+
+
 def process_file(args):
     result_lines = []
     logger.info("Processing %s ", args.file)
+    indices = None
     fd = open(args.file)
     for line in fd:
+        print("")
         h_line = HirataLine(line)
         cc4s_line = hirata_to_cc4s(h_line)
         lines = cc4s_to_cpp(cc4s_line)
@@ -326,9 +337,21 @@ def process_file(args):
         result_lines.append("// conv  : %s" % cc4s_line.get_printable_atoms())
         result_lines.append("// free  : %s" % cc4s_line.get_free_indices())
         result_lines.append("// summed: %s" % cc4s_line.get_summation_indices())
+        if args.contract_with:
+            if args.with_indices:
+                indices = args.with_indices
+            tensor_name = "{tensor}[\"{indices}\"]".format(
+                tensor=args.contract_with,
+                indices=cc4s_line.get_free_indices().replace(" ", "")
+            )
+            lines = [
+                re.sub(r"\)\s*\*\s*", ") * %s * " % tensor_name, li)
+                for li in lines
+            ]
         result_lines += lines
         result_lines.append("")
     if args.no_comments:
+        logger.debug("Getting rid of comments")
         result_lines = [li for li in result_lines if not re.match(r"^//.*$", li)]
     return result_lines
 
