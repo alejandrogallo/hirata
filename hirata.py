@@ -266,7 +266,7 @@ def cc4s_to_cpp(cc4s_line):
         result_line = "( %s )" % prefactor_val
         for postfactor in cc4s_line.get_postfactors():
             result_line += " * %s" % permute_cc4s_index(postfactor, start_indices, permuted_indices)
-        result.append(result_line)
+        result.append(result_line+";")
     return result
 
 
@@ -301,12 +301,12 @@ def process_file(file_name):
     logger.info("Processing %s ", file_name)
     fd = open(file_name)
     for line in fd:
-        result_lines.append("// %s" % line.replace("\n", ""))
+        result_lines.append("// orig  : %s" % line.replace("\n", ""))
         h_line = HirataLine(line)
         cc4s_line = hirata_to_cc4s(h_line)
-        result_lines.append("// %s" % cc4s_line.get_printable_atoms())
-        result_lines.append("// free %s" % cc4s_line.get_free_indices())
-        result_lines.append("// summed %s" % cc4s_line.get_summation_indices())
+        result_lines.append("// conv  : %s" % cc4s_line.get_printable_atoms())
+        result_lines.append("// free  : %s" % cc4s_line.get_free_indices())
+        result_lines.append("// summed: %s" % cc4s_line.get_summation_indices())
         lines = cc4s_to_cpp(cc4s_line)
         result_lines += lines
         result_lines.append("")
