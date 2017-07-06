@@ -277,29 +277,35 @@ def main():
     )
 
     parser.add_argument("-f", "--file",
-        help = "Input file",
-        action = "store"
+        help="Input file",
+        action="store"
     )
 
     parser.add_argument("-o", "--out",
-        help = "Output file (hirata.out)",
-        default = "hirata.cpp",
-        action = "store"
+        help="Output file (hirata.out)",
+        default="hirata.cpp",
+        action="store"
     )
 
     parser.add_argument("--fock",
-        help = "Kill non-fock contributions (i.e. Fai etc..)",
-        action = "store_true"
+        help="Kill non-fock contributions (i.e. Fai etc..)",
+        action="store_true"
     )
 
     parser.add_argument("--no-comments",
-        help = "Strip out the comments",
-        action = "store_true"
+        help="Strip out the comments",
+        action="store_true"
     )
 
     parser.add_argument("--contract-with",
-        help = "The name of the operator you want to contract with",
-        action = "store"
+        help="The name of the operator you want to contract with",
+        action="store"
+    )
+
+    parser.add_argument("--with-indices",
+        help="The indices of the operator that you want, for example abij etc...",
+        default=None,
+        action="store"
     )
 
     # Parse arguments
@@ -317,7 +323,34 @@ def get_tensor_name_with_indices(name, hp_partition, indices):
     T , abcj, klbc -> error because klbc is not pphh or any combination
     :returns: String containing the tensor expression
     """
-    pass
+    particles = conf.PARTICLE_INDICES.values()
+    ordered_indices = ""
+    holes = conf.HOLE_INDICES.values()
+    hole_indices = [i for i in indices if i in holes]
+    particle_indices = [i for i in indices if i in particles]
+    # sort
+    hole_indices.sort()
+    particle_indices.sort()
+    if not len([i for i in hp_partition if i in holes]) == len(hole_indices):
+        logger.error("%s must have as many holes as %s" % (hp_partition, indices))
+        sys.exit(1)
+    if not len(hp_partition) == len(indices):
+        logger.error("%s must have as many indices as %s" % (hp_partition, indices))
+        sys.exit(1)
+    for k in hp_partition:
+        if k in holes:
+            ordered_indices += hole_indices[0]
+            hole_indices.pop(0)
+        else:
+            ordered_indices += particle_indices[0]
+            particle_indices.pop(0)
+    tensor_name = "{tensor}{partition}[\"{indices}\"]".format(
+        tensor=name,
+        partition=hp_partition,
+        indices=ordered_indices
+    )
+    print(tensor_name)
+    return tensor_name
 
 
 def process_file(args):
@@ -340,9 +373,10 @@ def process_file(args):
         if args.contract_with:
             if args.with_indices:
                 indices = args.with_indices
-            tensor_name = "{tensor}[\"{indices}\"]".format(
-                tensor=args.contract_with,
-                indices=cc4s_line.get_free_indices().replace(" ", "")
+            tensor_name = get_tensor_name_with_indices(
+                args.contract_with,
+                args.with_indices,
+                cc4s_line.get_free_indices().replace(" ", "")
             )
             lines = [
                 re.sub(r"\)\s*\*\s*", ") * %s * " % tensor_name, li)

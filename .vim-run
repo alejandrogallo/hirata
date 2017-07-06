@@ -1,4 +1,5 @@
 #python hirata.py --fock -f eom-ccsd/L2.in &&
-python hirata.py --fock --no-comments -f eom-ccsd/L2.in &&
+#python hirata.py --fock --no-comments --contract-with P --with-indices abij -f eom-ccsd/L2.in &&
+python hirata.py --fock --contract-with P --with-indices abij -f eom-ccsd/L2.in &&
 vi hirata.cpp
 #make test
