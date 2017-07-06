@@ -5,8 +5,14 @@ $(patsubst %.in,%.cpp,$(ccsd_SOURCES)) \
 $(patsubst %.in,%-fock.cpp,$(ccsd_SOURCES)) \
 $(patsubst %.in,%-uncomment-fock.cpp,$(ccsd_SOURCES))
 
-eom-ccd: ## Create eom-ccd equations
-eom-ccsd: ## Create eom-ccsd equations
+eom_ccsd_SOURCES = $(wildcard eom-ccsd/*.in)
+eom_ccsd_TARGETS = \
+$(patsubst %.in,%.cpp,$(eom_ccsd_SOURCES)) \
+$(patsubst %.in,%-fock.cpp,$(eom_ccsd_SOURCES)) \
+$(patsubst %.in,%-uncomment-fock.cpp,$(eom_ccsd_SOURCES))
+
+#eom-ccd: ## Create eom-ccd equations
+eom-ccsd: $(eom_ccsd_TARGETS) ## Create eom-ccsd equations
 
 
 ccsd: $(ccsd_TARGETS) ## Create ccsd equations
