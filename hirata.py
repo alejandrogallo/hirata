@@ -308,6 +308,12 @@ def main():
         action="store"
     )
 
+    parser.add_argument("--prepend",
+        help="Prepend anything to every line of the equations",
+        default="",
+        action="store"
+    )
+
     # Parse arguments
     args = parser.parse_args()
 
@@ -382,6 +388,8 @@ def process_file(args):
                 re.sub(r"\)\s*\*\s*", ") * %s * " % tensor_name, li)
                 for li in lines
             ]
+        if args.prepend:
+            lines = [args.prepend + li for li in lines]
         result_lines += lines
         result_lines.append("")
     if args.no_comments:
