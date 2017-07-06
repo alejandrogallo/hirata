@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 
-hirata=hirata.py
+SCRIPT_DIR=$(readlink -f $(dirname $0))
+hirata=${SCRIPT_DIR}/../hirata.py
 
 if [[ ! -f ${hirata} ]]; then
   echo "You need the ${hirata} script to continue"
@@ -13,24 +14,25 @@ if [[ -z $1 ]]; then
 fi
 
 equations_folder=$1
+cd ${equations_folder}
 
 set -x
 
 ${hirata} --fock \
-  -f ${equations_folder}/L1.in \
-  -o ${equations_folder}/L1HR1_from_L1.cpp \
+  -f L1.in \
+  -o L1HR1_from_L1.cpp \
   --prepend 'energy[""] = ' --contract-with R --with-indices ai   &&
 ${hirata} --fock \
-  -f ${equations_folder}/L2.in \
-  -o ${equations_folder}/L2HR2_from_L2.cpp \
+  -f L2.in \
+  -o L2HR2_from_L2.cpp \
   --prepend 'energy[""] = ' --contract-with R --with-indices abij &&
 ${hirata} --fock \
-  -f ${equations_folder}/R1.in \
-  -o ${equations_folder}/L1HR1_from_R1.cpp \
+  -f R1.in \
+  -o L1HR1_from_R1.cpp \
   --prepend 'energy[""] = ' --contract-with L --with-indices ia   &&
 ${hirata} --fock \
-  -f ${equations_folder}/R2.in \
-  -o ${equations_folder}/L2HR2_from_R2.cpp \
+  -f R2.in \
+  -o L2HR2_from_R2.cpp \
   --prepend 'energy[""] = ' --contract-with L --with-indices ijab
 
 cat L1HR1_from_L1.cpp L2HR2_from_L2.cpp > LHR_from_L.cpp
