@@ -1,7 +1,24 @@
 
+ccsd_SOURCES = $(wildcard ccsd/*.in)
+ccsd_TARGETS = \
+$(patsubst %.in,%.cpp,$(ccsd_SOURCES)) \
+$(patsubst %.in,%-fock.cpp,$(ccsd_SOURCES)) \
+$(patsubst %.in,%-uncomment-fock.cpp,$(ccsd_SOURCES))
 
 eom-ccd: ## Create eom-ccd equations
 eom-ccsd: ## Create eom-ccsd equations
+
+
+ccsd: $(ccsd_TARGETS) ## Create ccsd equations
+
+%.cpp: %.in
+	./hirata.py -o $@ -f $<
+
+%-fock.cpp: %.in
+	./hirata.py --fock -o $@ -f $<
+
+%-uncomment-fock.cpp: %.in
+	./hirata.py --no-comment --fock -o $@ -f $<
 
 test:
 	python -m unittest discover tests/

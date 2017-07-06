@@ -277,39 +277,59 @@ def main():
     )
 
     parser.add_argument("-f", "--file",
-        help   = "Input file",
+        help = "Input file",
         action = "store"
     )
 
     parser.add_argument("-o", "--out",
-        help   = "Output file (hirata.out)",
+        help = "Output file (hirata.out)",
         default = "hirata.cpp",
+        action = "store"
+    )
+
+    parser.add_argument("--fock",
+        help = "Kill non-fock contributions (i.e. Fai etc..)",
+        action = "store_true"
+    )
+
+    parser.add_argument("--no-comments",
+        help = "Strip out the comments",
+        action = "store_true"
+    )
+
+    parser.add_argument("--contract-with",
+        help = "The name of the operator you want to contract with",
         action = "store"
     )
 
     # Parse arguments
     args = parser.parse_args()
 
-    result_lines = process_file(args.file)
+    result_lines = process_file(args)
     fd = open(args.out, "w+")
     for line in result_lines:
         fd.write("%s\n" % line)
 
 
-def process_file(file_name):
+def process_file(args):
     result_lines = []
-    logger.info("Processing %s ", file_name)
-    fd = open(file_name)
+    logger.info("Processing %s ", args.file)
+    fd = open(args.file)
     for line in fd:
-        result_lines.append("// orig  : %s" % line.replace("\n", ""))
         h_line = HirataLine(line)
         cc4s_line = hirata_to_cc4s(h_line)
+        lines = cc4s_to_cpp(cc4s_line)
+        if args.fock and re.match(r".*(Fai|Fia).*", ",".join(lines)):
+            logger.debug("Killing fock contributions")
+            lines = ["// <FOCK> " + li for li in lines]
+        result_lines.append("// orig  : %s" % line.replace("\n", ""))
         result_lines.append("// conv  : %s" % cc4s_line.get_printable_atoms())
         result_lines.append("// free  : %s" % cc4s_line.get_free_indices())
         result_lines.append("// summed: %s" % cc4s_line.get_summation_indices())
-        lines = cc4s_to_cpp(cc4s_line)
         result_lines += lines
         result_lines.append("")
+    if args.no_comments:
+        result_lines = [li for li in result_lines if not re.match(r"^//.*$", li)]
     return result_lines
 
 
