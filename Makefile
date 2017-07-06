@@ -14,9 +14,13 @@ $(patsubst %.in,%-uncomment-fock.cpp,$(eom_ccsd_SOURCES))
 eom_ccd_SOURCES = $(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_SOURCES))
 eom_ccd_TARGETS = \
 $(eom_ccd_SOURCES) \
-#$(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_TARGETS)) \
+$(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_TARGETS)) \
 
-eom-ccd/%: eom-ccsd/%
+ifdef QUIET
+FD_OUTPUT = >> log.txt 2>&1
+endif
+
+eom-ccd/%.in: eom-ccsd/%.in
 	@echo Creating $@ from $<
 	@mkdir -p $(dir $@)
 	sed "/t\s*(\s*[ph][0-9]\s\+[ph][0-9]\s*)/d" $< > $@
@@ -25,17 +29,16 @@ eom-ccd: $(eom_ccd_TARGETS) ## Create eom-ccd equations
 
 eom-ccsd: $(eom_ccsd_TARGETS) ## Create eom-ccsd equations
 
-
 ccsd: $(ccsd_TARGETS) ## Create ccsd equations
 
 %.cpp: %.in
-	./hirata.py -o $@ -f $<
+	./hirata.py -o $@ -f $< $(FD_OUTPUT)
 
 %-fock.cpp: %.in
-	./hirata.py --fock -o $@ -f $<
+	./hirata.py --fock -o $@ -f $< $(FD_OUTPUT)
 
 %-uncomment-fock.cpp: %.in
-	./hirata.py --no-comment --fock -o $@ -f $<
+	./hirata.py --no-comment --fock -o $@ -f $< $(FD_OUTPUT)
 
 test:
 	python -m unittest discover tests/
