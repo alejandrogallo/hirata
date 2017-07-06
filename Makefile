@@ -14,12 +14,12 @@ $(patsubst %.in,%-uncomment-fock.cpp,$(eom_ccsd_SOURCES))
 eom_ccd_SOURCES = $(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_SOURCES))
 eom_ccd_TARGETS = \
 $(eom_ccd_SOURCES) \
-$(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_TARGETS)) \
+#$(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_TARGETS)) \
 
-$(eom_ccd_SOURCES): $(eom_ccsd_SOURCES)
+eom-ccd/%: eom-ccsd/%
 	@echo Creating $@ from $<
 	@mkdir -p $(dir $@)
-	sed "/t\s*(\s*[ph][0-9]\s+[ph][0-9]\s*)/d" $< > $@
+	sed "/t\s*(\s*[ph][0-9]\s\+[ph][0-9]\s*)/d" $< > $@
 
 eom-ccd: $(eom_ccd_TARGETS) ## Create eom-ccd equations
 
