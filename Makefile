@@ -28,7 +28,7 @@ eom-ccd/%.in: eom-ccsd/%.in
 
 %/contracted:
 	mkdir -p $@
-	tools/create-contracted-eom.sh $*
+	tools/create-contracted-eom.sh $* $(FD_OUTPUT)
 
 eom-ccd: $(eom_ccd_TARGETS) ## Create eom-ccd equations
 
