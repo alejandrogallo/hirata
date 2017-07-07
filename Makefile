@@ -23,6 +23,8 @@ endif
 
 .DEFAULT_GOAL = help
 
+all: eom-ccd eom-ccsd ccsd ## Create all equations
+
 eom-ccd/%.in: eom-ccsd/%.in
 	@echo Creating $@ from $<
 	@mkdir -p $(dir $@)
