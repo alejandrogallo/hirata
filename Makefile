@@ -5,6 +5,12 @@ $(patsubst %.in,%.cpp,$(ccsd_SOURCES)) \
 $(patsubst %.in,%-fock.cpp,$(ccsd_SOURCES)) \
 $(patsubst %.in,%-uncomment-fock.cpp,$(ccsd_SOURCES))
 
+ccsdt_SOURCES = $(wildcard ccsdt/*.in)
+ccsdt_TARGETS = \
+$(patsubst %.in,%.cpp,$(ccsdt_SOURCES)) \
+$(patsubst %.in,%-fock.cpp,$(ccsdt_SOURCES)) \
+$(patsubst %.in,%-uncomment-fock.cpp,$(ccsdt_SOURCES))
+
 eom_ccsd_SOURCES = $(wildcard eom-ccsd/*.in)
 eom_ccsd_TARGETS = \
 $(patsubst %.in,%.cpp,$(eom_ccsd_SOURCES)) \
@@ -39,6 +45,8 @@ eom-ccd: $(eom_ccd_TARGETS) ## Create eom-ccd equations
 eom-ccsd: $(eom_ccsd_TARGETS) ## Create eom-ccsd equations
 
 ccsd: $(ccsd_TARGETS) ## Create ccsd equations
+
+ccsdt: $(ccsdt_TARGETS) ## Create ccsdt equations
 
 %.cpp: %.in
 	./hirata.py -o $@ -f $< $(FD_OUTPUT)
