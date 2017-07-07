@@ -29,7 +29,7 @@ endif
 
 .DEFAULT_GOAL = help
 
-ALL_EQS = eom-ccd eom-ccsd ccsd cssdt
+ALL_EQS = eom-ccd eom-ccsd ccsd ccsdt
 
 all: $(ALL_EQS) ## Create all equations
 
