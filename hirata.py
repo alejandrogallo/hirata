@@ -160,6 +160,7 @@ def get_converted_hp_combination(atom):
         abij = conf.TENSOR_INDICES_TRANSLATION[pppp]
         if hp[0:len(hp)] == pppp[0:len(hp)]:
             return abij[0: len(hp)]
+    return hp
 
 
 def translate_tensor_names(atom):
