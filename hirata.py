@@ -317,6 +317,10 @@ def main():
     # Parse arguments
     args = parser.parse_args()
 
+    if not args.file:
+        parser.print_help()
+        sys.exit(1)
+
     result_lines = process_file(args)
     fd = open(args.out, "w+")
     for line in result_lines:
