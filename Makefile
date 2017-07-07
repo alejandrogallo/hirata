@@ -29,7 +29,9 @@ endif
 
 .DEFAULT_GOAL = help
 
-all: eom-ccd eom-ccsd ccsd ## Create all equations
+ALL_EQS = eom-ccd eom-ccsd ccsd cssdt
+
+all: $(ALL_EQS) ## Create all equations
 
 eom-ccd/%.in: eom-ccsd/%.in
 	@echo Creating $@ from $<
