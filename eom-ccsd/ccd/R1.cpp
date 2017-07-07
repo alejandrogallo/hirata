@@ -1,8 +1,0 @@
-( - 1.0 ) *  Fij["ki"]     * Rai["bk"]
-( + 1.0 ) *  Fab["bc"]     * Rai["ci"]
-( - 1.0 ) *  Viajb["kbid"] * Rai["dk"]
-( + 0.5 ) *  Vijka["klie"] * Rabij["ebkl"]
-( + 0.5 ) *  Viabc["kbde"] * Rabij["deki"]
-( + 1.0 ) *  Tabij["cbli"] * Vijab["lmcf"] * Rai["fm"]
-( - 0.5 ) *  Tabij["cdmi"] * Vijab["mncd"] * Rai["bn"]
-( - 0.5 ) *  Tabij["cblm"] * Vijab["lmcf"] * Rai["fi"]
