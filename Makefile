@@ -21,6 +21,8 @@ ifdef QUIET
 FD_OUTPUT = >> log.txt 2>&1
 endif
 
+.DEFAULT_GOAL = help
+
 eom-ccd/%.in: eom-ccsd/%.in
 	@echo Creating $@ from $<
 	@mkdir -p $(dir $@)
