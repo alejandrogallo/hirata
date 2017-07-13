@@ -16,7 +16,8 @@ eom_ccsd_TARGETS = \
 $(patsubst %.in,%.cpp,$(eom_ccsd_SOURCES)) \
 $(patsubst %.in,%-fock.cpp,$(eom_ccsd_SOURCES)) \
 $(patsubst %.in,%-uncomment-fock.cpp,$(eom_ccsd_SOURCES)) \
-eom-ccsd/contracted
+eom-ccsd/contracted \
+eom-ccsd/intermediates \
 
 eom_ccd_SOURCES = $(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_SOURCES))
 eom_ccd_TARGETS = \
@@ -41,6 +42,10 @@ eom-ccd/%.in: eom-ccsd/%.in
 %/contracted:
 	mkdir -p $@
 	tools/create-contracted-eom.sh $* $(FD_OUTPUT)
+
+%/intermediates:
+	mkdir -p $@
+	tools/create-intermediates-eom.sh $* $(FD_OUTPUT)
 
 eom-ccd: $(eom_ccd_TARGETS) ## Create eom-ccd equations
 

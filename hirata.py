@@ -315,8 +315,16 @@ def main():
         action="store"
     )
 
+    parser.add_argument("--with-intermediates",
+        help="""Put every line equal to some intermediate, you need to provide
+        a name""",
+        default="",
+        action="store"
+    )
+
     # Parse arguments
     args = parser.parse_args()
+    print(args)
 
     if not args.file:
         parser.print_help()
@@ -360,7 +368,6 @@ def get_tensor_name_with_indices(name, hp_partition, indices):
         partition=hp_partition,
         indices=ordered_indices
     )
-    print(tensor_name)
     return tensor_name
 
 
@@ -374,8 +381,10 @@ def process_file(args):
         h_line = HirataLine(line)
         cc4s_line = hirata_to_cc4s(h_line)
         lines = cc4s_to_cpp(cc4s_line)
+        removed_cause_fock = False
         if args.fock and re.match(r".*(Fai|Fia).*", ",".join(lines)):
             logger.debug("Killing fock contributions")
+            removed_cause_fock = True
             lines = ["// <FOCK> " + li for li in lines]
         result_lines.append("// orig  : %s" % line.replace("\n", ""))
         result_lines.append("// conv  : %s" % cc4s_line.get_printable_atoms())
@@ -389,12 +398,25 @@ def process_file(args):
                 args.with_indices,
                 cc4s_line.get_free_indices().replace(" ", "")
             )
+            logger.debug("Contracting with tensor %s" % tensor_name)
             lines = [
                 re.sub(r"\)\s*\*\s*", ") * %s * " % tensor_name, li)
                 for li in lines
             ]
         if args.prepend:
+            logger.debug("Prepending %s" % args.prepend)
             lines = [args.prepend + li for li in lines]
+        if args.with_intermediates and not removed_cause_fock:
+            if args.with_indices:
+                indices = args.with_indices
+            tensor_name = args.with_intermediates
+            free_indices = cc4s_line.get_free_indices().replace(" ", "")
+            tensor = get_tensor_name_with_indices(tensor_name, indices, free_indices)
+            logger.debug("Intermediate %s" % tensor)
+            lines = [
+                "%s = %s" % (tensor, li)
+                for li in lines
+            ]
         result_lines += lines
         result_lines.append("")
     if args.no_comments:
