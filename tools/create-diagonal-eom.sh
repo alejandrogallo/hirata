@@ -17,6 +17,7 @@ equations_folder=$1
 cd ${equations_folder}
 
 folder=diagonal
+mkdir -p ${diagonal_file}
 
 set -x
 
@@ -40,7 +41,20 @@ ${hirata} --fock \
 cat ${folder}/L1HR1_from_L1.cpp ${folder}/L2HR2_from_L2.cpp > ${folder}/LHR_from_L.cpp
 cat ${folder}/L1HR1_from_R1.cpp ${folder}/L2HR2_from_R2.cpp > ${folder}/LHR_from_R.cpp
 
-sed "/\/\//d; /^$/d" ${folder}/LHR_from_L.cpp > ${folder}/LHR_from_L_clean.cpp
-sed "/\/\//d; /^$/d" ${folder}/LHR_from_R.cpp > ${folder}/LHR_from_R_clean.cpp
+#Up to here it is the contracted code, now we remove Onebody H twobody
+#terms etc...
 
-#vim-run: bash %
+for file in ${folder}/LHR_from_L.cpp ${folder}/LHR_from_R.cpp; do
+  echo ${file}
+  file_clean=${folder}/$(basename ${file} .cpp)_clean.cpp
+  diagonal_file=${folder}/$(basename ${file} .cpp)_diagonal.cpp
+  diagonal_file_clean=${folder}/$(basename ${file} .cpp)_diagonal_clean.cpp
+  echo > ${diagonal_file}
+  cat ${file} | grep Lia   | grep Rai   >> ${diagonal_file}
+  cat ${file} | grep Lijab | grep Rabij >> ${diagonal_file}
+  # Cleaning comments
+  sed "/\/\//d; /^$/d" ${diagonal_file} > ${diagonal_file_clean}
+  sed "/\/\//d; /^$/d" ${file} > ${file_clean}
+done
+
+#vim-run: bash % eom-ccsd/
