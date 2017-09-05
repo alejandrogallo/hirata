@@ -18,6 +18,7 @@ $(patsubst %.in,%-fock.cpp,$(eom_ccsd_SOURCES)) \
 $(patsubst %.in,%-uncomment-fock.cpp,$(eom_ccsd_SOURCES)) \
 eom-ccsd/contracted \
 eom-ccsd/intermediates \
+eom-ccsd/diagonal \
 
 eom_ccd_SOURCES = $(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_SOURCES))
 eom_ccd_TARGETS = \
@@ -38,6 +39,10 @@ eom-ccd/%.in: eom-ccsd/%.in
 	@echo Creating $@ from $<
 	@mkdir -p $(dir $@)
 	sed "/t\s*(\s*[ph][0-9]\s\+[ph][0-9]\s*)/d" $< > $@
+
+%/diagonal:
+	mkdir -p $@
+	tools/create-diagonal-eom.sh $* $(FD_OUTPUT)
 
 %/contracted:
 	mkdir -p $@
