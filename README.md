@@ -20,3 +20,13 @@ In principle for us it does not really matter because we can leverage with the
 name of the tensor, i.e., we can still use abcd... for all states, but put the
 hole-particle partition of the space in the name, i.e., Thhhhppp["abcdefg"] it
 is clear that the first three indices are holes and the others are particles.
+
+
+# CCSD Amplitudes
+
+Type
+
+  make ccsd
+
+It will create also the intermediates.
+

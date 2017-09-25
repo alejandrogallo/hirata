@@ -29,19 +29,19 @@ set -x
 
 ${hirata} --fock \
   -f T1.in \
-  -o ${folder}/X1.cpp \
-  --with-intermediates X \
+  -o ${folder}/R1.cpp \
+  --with-intermediates R \
   --with-indices ai   &&
 
 ${hirata} --fock \
   -f T2.in \
-  -o ${folder}/X2.cpp \
-  --with-intermediates X \
+  -o ${folder}/R2.cpp \
+  --with-intermediates R \
   --with-indices abij
 
-#for out in ${folder}/* ; do
-  #sed "/\/\//d; /^$/d" ${out} > ${folder}/$(basename ${out} .cpp)-no-comment.cpp
-#done
+for out in ${folder}/* ; do
+  sed "/\/\//d; /^$/d" ${out} > ${folder}/$(basename ${out} .cpp)-no-comment.cpp
+done
 
 #cat ${folder}/L1HR1_from_L1.cpp ${folder}/L2HR2_from_L2.cpp > ${folder}/LHR_from_L.cpp
 #cat ${folder}/L1HR1_from_R1.cpp ${folder}/L2HR2_from_R2.cpp > ${folder}/LHR_from_R.cpp
