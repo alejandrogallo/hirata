@@ -3,7 +3,8 @@ ccsd_SOURCES = $(wildcard ccsd/*.in)
 ccsd_TARGETS = \
 $(patsubst %.in,%.cpp,$(ccsd_SOURCES)) \
 $(patsubst %.in,%-fock.cpp,$(ccsd_SOURCES)) \
-$(patsubst %.in,%-uncomment-fock.cpp,$(ccsd_SOURCES))
+$(patsubst %.in,%-uncomment-fock.cpp,$(ccsd_SOURCES)) \
+ccsd/intermediates \
 
 ccsdt_SOURCES = $(wildcard ccsdt/*.in)
 ccsdt_TARGETS = \
@@ -48,9 +49,13 @@ eom-ccd/%.in: eom-ccsd/%.in
 	mkdir -p $@
 	tools/create-contracted-eom.sh $* $(FD_OUTPUT)
 
+ccsd/intermediates:
+	mkdir -p $@
+	ccsd/scripts/create-intermediates.sh ccsd $(FD_OUTPUT)
+
 %/intermediates:
 	mkdir -p $@
-	tools/create-intermediates-eom.sh $* $(FD_OUTPUT)
+	tools/mreate-intermediates-eom.sh $* $(FD_OUTPUT)
 
 eom-ccd: $(eom_ccd_TARGETS) ## Create eom-ccd equations
 
