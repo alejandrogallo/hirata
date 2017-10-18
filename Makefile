@@ -55,7 +55,7 @@ ccsd/intermediates:
 
 %/intermediates:
 	mkdir -p $@
-	tools/mreate-intermediates-eom.sh $* $(FD_OUTPUT)
+	tools/create-intermediates-eom.sh $* $(FD_OUTPUT)
 
 eom-ccd: $(eom_ccd_TARGETS) ## Create eom-ccd equations
 
