@@ -239,7 +239,7 @@ def hirata_to_cc4s(hirata_line):
     )
     logger.debug("Free indices= %s", line.get_free_indices())
 
-    logger.debug(" Atoms = %s", line.get_atoms())
+    logger.debug(" Atoms = %s", line.get_printable_atoms())
 
     return line
 
@@ -318,6 +318,12 @@ def main():
     parser.add_argument("--with-intermediates",
         help="""Put every line equal to some intermediate, you need to provide
         a name""",
+        default="",
+        action="store"
+    )
+
+    parser.add_argument("--python-tuples-out",
+        help="Export data in python tuples to a file",
         default="",
         action="store"
     )
@@ -403,6 +409,15 @@ def process_file(args):
                 re.sub(r"\)\s*\*\s*", ") * %s * " % tensor_name, li)
                 for li in lines
             ]
+        if args.python_tuples_out and not removed_cause_fock:
+            with open(args.python_tuples_out, 'a+') as fd:
+                for line in lines:
+                    fd.write(
+                    str(
+                        line.replace(' ', '').replace(';', '').split('*')[1:]
+                    )
+                    )
+                    fd.write('\n')
         if args.prepend:
             logger.debug("Prepending %s" % args.prepend)
             lines = [args.prepend + li for li in lines]
@@ -411,7 +426,11 @@ def process_file(args):
                 indices = args.with_indices
             tensor_name = args.with_intermediates
             free_indices = cc4s_line.get_free_indices().replace(" ", "")
-            tensor = get_tensor_name_with_indices(tensor_name, indices, free_indices)
+            tensor = get_tensor_name_with_indices(
+                tensor_name,
+                indices,
+                free_indices
+            )
             logger.debug("Intermediate %s" % tensor)
             lines = [
                 "%s = %s" % (tensor, li)

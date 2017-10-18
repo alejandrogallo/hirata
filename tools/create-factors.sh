@@ -24,9 +24,18 @@ equations=$(ls *.in)
 set -x
 
 for equation in ${equations} ; do
-${hirata} --fock \
-  -f ${equation} \
-  --python-tuples-out ${folder}/$(basename ${equation} .in).py
+  ${hirata} --fock \
+    -f ${equation} \
+    --python-tuples-out ${folder}/$(basename ${equation} .in).py
 done
+
+all_equations_file=${folder}/equations.py
+py_files=$(ls ${folder}/*.py)
+
+echo "[" > ${all_equations_file}
+for equation in ${py_files}; do
+  sed "s/^.*$/&,/" ${equation} >> ${all_equations_file}
+done
+echo "]" >> ${all_equations_file}
 
 exit 0

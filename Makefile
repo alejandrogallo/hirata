@@ -19,6 +19,7 @@ $(patsubst %.in,%-fock.cpp,$(eom_ccsd_SOURCES)) \
 $(patsubst %.in,%-uncomment-fock.cpp,$(eom_ccsd_SOURCES)) \
 eom-ccsd/contracted \
 eom-ccsd/intermediates \
+eom-ccsd/factors \
 eom-ccsd/diagonal \
 
 eom_ccd_SOURCES = $(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_SOURCES))
@@ -44,6 +45,10 @@ eom-ccd/%.in: eom-ccsd/%.in
 %/diagonal:
 	mkdir -p $@
 	tools/create-diagonal-eom.sh $* $(FD_OUTPUT)
+
+%/factors:
+	mkdir -p $@
+	tools/create-factors.sh $* $(FD_OUTPUT)
 
 %/contracted:
 	mkdir -p $@
@@ -92,8 +97,8 @@ help: ## Prints help for targets with comments
 		$(MAKEFILE_LIST)
 
 clean:
-	git clean -xf
-	git clean -xfd
+	-git clean -xf
+	-git clean -xfd
 
 # This is used for printing defined variables from Some other scripts. For
 # instance if you want to know the value of the PDF_VIEWER defined in the
