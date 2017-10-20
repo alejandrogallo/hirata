@@ -5,5 +5,10 @@
 #make test
 #rm -rf eom-ccd/intermediates ; make eom-ccd ; vim eom-ccd/intermediates/HR1.cpp
 
-rm -rf ccsd/intermediates/ &&
-make ccsd/intermediates
+#rm -rf ccsd/intermediates/ &&
+#make ccsd/intermediates
+
+#./hirata.py -f ccsd/T1.in --python-tuples-out this.out --fock
+
+make clean ;
+make eom-ccsd/factors
