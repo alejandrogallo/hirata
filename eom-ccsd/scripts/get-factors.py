@@ -66,10 +66,12 @@ class Tensor:
         else:
             return False
 
-def check_compatibility(eqs):
+def check_compatibility(eqs, LR=None):
     import itertools
     import operator
     from functools import reduce
+    if LR is not None:
+        eqs = [eq for eq in eqs if str(eq[-1])[0] == LR]
     combinations = [
         list(
             itertools.chain.from_iterable(
@@ -92,13 +94,11 @@ def check_compatibility(eqs):
             # Get rid of already counted terms
             if prod in [d.get('term') for d in count]: continue
             # print(prod)
-            count.append(dict(term=prod, count=0))
-            for other_line in products:
+            count.append(dict(term=prod, count=0, lines=[]))
+            for j, other_line in enumerate(products):
                 if prod in other_line:
                     count[-1]['count'] += 1
-                # for other_prod in other_line:
-                    # if other_prod == prod:
-                        # print(prod)
+                    count[-1]['lines'].append(eqs[j])
     return count
 
 eqs = eval(open(equations_file).read())
@@ -110,10 +110,15 @@ eqs_objects = [
     for line in eqs
 ]
 
-count = check_compatibility(eqs_objects)
+count = check_compatibility(eqs_objects, LR='R')
+# count = check_compatibility(eqs_objects, LR='L')
+# count = check_compatibility(eqs_objects)
 
 for c in sorted(count, key=lambda x: x[ 'count' ]):
     print("{term!r:<30.30}  {count:<10}".format(**c))
+
+    for line in c.get('lines'):
+        print("\t{line!r:^}".format(line=line))
 
 
 
