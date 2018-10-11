@@ -27,6 +27,12 @@ eom_ccd_TARGETS = \
 $(eom_ccd_SOURCES) \
 $(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_TARGETS)) \
 
+mbpt1_SOURCES = $(wildcard mbpt1/*.in)
+mbpt1_TARGETS = \
+$(patsubst %.in,%.cpp,$(mbpt1_SOURCES)) \
+$(patsubst %.in,%-fock.cpp,$(mbpt1_SOURCES)) \
+$(patsubst %.in,%-uncomment-fock.cpp,$(mbpt1_SOURCES))
+
 ifdef QUIET
 FD_OUTPUT = >> log.txt 2>&1
 endif
@@ -69,6 +75,8 @@ eom-ccsd: $(eom_ccsd_TARGETS) ## Create eom-ccsd equations
 ccsd: $(ccsd_TARGETS) ## Create ccsd equations
 
 ccsdt: $(ccsdt_TARGETS) ## Create ccsdt equations
+
+mbpt1: $(mbpt1_TARGETS) ## Create mbpt1 equations
 
 %.cpp: %.in
 	./hirata.py -o $@ -f $< $(FD_OUTPUT)
