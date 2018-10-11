@@ -29,7 +29,10 @@ TENSOR_NAME_TRANSLATON = dict(
     y="L{hpindices}",
     v="V{hpindices}",
     f="F{hpindices}",
-    t="T{hpindices}"
+    t="T{hpindices}",
+    t1="T1{hpindices}",
+    t2="T2{hpindices}",
+    t3="T3{hpindices}",
 )
 
 # Up to 4 indices, for less we will just get the first two characters of every

@@ -33,6 +33,12 @@ $(patsubst %.in,%.cpp,$(mbpt1_SOURCES)) \
 $(patsubst %.in,%-fock.cpp,$(mbpt1_SOURCES)) \
 $(patsubst %.in,%-uncomment-fock.cpp,$(mbpt1_SOURCES))
 
+mbpt2_SOURCES = $(wildcard mbpt2/*.in)
+mbpt2_TARGETS = \
+$(patsubst %.in,%.cpp,$(mbpt2_SOURCES)) \
+$(patsubst %.in,%-fock.cpp,$(mbpt2_SOURCES)) \
+$(patsubst %.in,%-uncomment-fock.cpp,$(mbpt2_SOURCES))
+
 ifdef QUIET
 FD_OUTPUT = >> log.txt 2>&1
 endif
@@ -77,6 +83,8 @@ ccsd: $(ccsd_TARGETS) ## Create ccsd equations
 ccsdt: $(ccsdt_TARGETS) ## Create ccsdt equations
 
 mbpt1: $(mbpt1_TARGETS) ## Create mbpt1 equations
+
+mbpt2: $(mbpt2_TARGETS) ## Create mbpt2 equations
 
 %.cpp: %.in
 	./hirata.py -o $@ -f $< $(FD_OUTPUT)
