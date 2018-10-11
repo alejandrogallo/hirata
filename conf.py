@@ -9,6 +9,8 @@ PARTICLE_INDICES = dict(
     p7="g",
     p8="h",
     p9="A",
+    p10="B",
+    p11="C",
 )
 
 HOLE_INDICES = dict(
@@ -20,7 +22,9 @@ HOLE_INDICES = dict(
     h6="n",
     h7="o",
     h8="p",
-    h9="I"
+    h9="I",
+    h10="J",
+    h11="K",
 )
 
 # This is just for the main name
