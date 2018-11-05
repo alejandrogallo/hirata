@@ -39,6 +39,13 @@ $(patsubst %.in,%.cpp,$(mbpt2_SOURCES)) \
 $(patsubst %.in,%-fock.cpp,$(mbpt2_SOURCES)) \
 $(patsubst %.in,%-uncomment-fock.cpp,$(mbpt2_SOURCES))
 
+lambda_ccsd_SOURCES = $(wildcard lambda-ccsd/*.in)
+lambda_ccsd_TARGETS = \
+$(patsubst %.in,%.cpp,$(lambda_ccsd_SOURCES)) \
+$(patsubst %.in,%-fock.cpp,$(lambda_ccsd_SOURCES)) \
+$(patsubst %.in,%-uncomment-fock.cpp,$(lambda_ccsd_SOURCES))
+
+
 ifdef QUIET
 FD_OUTPUT = >> log.txt 2>&1
 endif
@@ -85,6 +92,8 @@ ccsdt: $(ccsdt_TARGETS) ## Create ccsdt equations
 mbpt1: $(mbpt1_TARGETS) ## Create mbpt1 equations
 
 mbpt2: $(mbpt2_TARGETS) ## Create mbpt2 equations
+
+lambda_ccsd: $(lambda_ccsd_TARGETS) ## Create lambda ccsd equations
 
 %.cpp: %.in
 	./hirata.py -o $@ -f $< $(FD_OUTPUT)
