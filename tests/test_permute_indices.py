@@ -1,4 +1,4 @@
-from hirata import permute_indices
+from hirata.utils import permute_indices
 
 assert permute_indices("ab", "ib", "bi") == "ai"
 assert permute_indices("abcd", "cd", "dc") == "abdc"

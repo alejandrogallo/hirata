@@ -1,4 +1,4 @@
-from hirata import get_tensor_name_with_indices
+from hirata.utils import get_tensor_name_with_indices
 
 def test_simple():
 

@@ -1,5 +1,8 @@
 temp
 env
 *.swp
+*.cpp
+*.egg-info
+tags
 
 log.txt
