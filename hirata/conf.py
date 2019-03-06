@@ -1,40 +1,12 @@
 
 PARTICLE_INDICES = dict(
-    p1="a",
-    p2="b",
-    p3="c",
-    p4="d",
-    p5="e",
-    p6="f",
-    p7="g",
-    p8="h",
-    p9="A",
-    p10="B",
-    p11="C",
-    p12="D",
-    p13="E",
-    p14="F",
-    p15="G",
-    p16="H",
+    p1="a", p2="b", p3="c", p4="d", p5="e", p6="f", p7="g", p8="h",
+    p9="A", p10="B", p11="C", p12="D", p13="E", p14="F", p15="G", p16="H",
 )
 
 HOLE_INDICES = dict(
-    h1="i",
-    h2="j",
-    h3="k",
-    h4="l",
-    h5="m",
-    h6="n",
-    h7="o",
-    h8="p",
-    h9="I",
-    h10="J",
-    h11="K",
-    h12="L",
-    h13="M",
-    h14="N",
-    h15="O",
-    h16="P",
+    h1="i", h2="j", h3="k", h4="l", h5="m", h6="n", h7="o", h8="p",
+    h9="I", h10="J", h11="K", h12="L", h13="M", h14="N", h15="O", h16="P",
 )
 
 # This is just for the main name
