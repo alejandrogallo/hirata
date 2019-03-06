@@ -10,5 +10,5 @@
 
 #./hirata.py -f ccsd/T1.in --python-tuples-out this.out --fock
 
-make clean ;
-make eom-ccsd/factors
+#make clean ;
+#make eom-ccsd/factors

@@ -42,24 +42,29 @@ TENSOR_NAME_TRANSLATON = dict(
 # Up to 4 indices, for less we will just get the first two characters of every
 # case
 TENSOR_INDICES_TRANSLATION = dict(
-    hhhh="ijkl",
+    # Doubles
 
-    phhh="aijk",
-    hphh="iajk",
-    hhph="ijak",
-    hhhp="ijka",
+    hhhh="ijkl", phhh="aijk", hphh="iajk", hhph="ijak", hhhp="ijka",
+    pphh="abij", phph="aibj", phhp="aijb", hpph="iabj", hphp="iajb",
+    hhpp="ijab", ppph="abci", pphp="abic", phpp="aibc", hppp="iabc",
+    pppp="abcd", hhhhhh="ijklmn",
 
-    pphh="abij",
-    phph="aibj",
-    phhp="aijb",
-    hpph="iabj",
-    hphp="iajb",
-    hhpp="ijab",
+    # Triples
+    hhhhhp="ijklma", hhhhph="ijklam", hhhhpp="ijklab", hhhphh="ijkalm",
+    hhhphp="ijkalb", hhhpph="ijkabl", hhhppp="ijkabc", hhphhh="ijaklm",
+    hhphhp="ijaklb", hhphph="ijakbl", hhphpp="ijakbc", hhpphh="ijabkl",
+    hhpphp="ijabkc", hhppph="ijabck", hhpppp="ijabcd", hphhhh="iajklm",
+    hphhhp="iajklb", hphhph="iajkbl", hphhpp="iajkbc", hphphh="iajbkl",
+    hphphp="iajbkc", hphpph="iajbck", hphppp="iajbcd", hpphhh="iabjkl",
+    hpphhp="iabjkc", hpphph="iabjck", hpphpp="iabjcd", hppphh="iabcjk",
+    hppphp="iabcjd", hpppph="iabcdj", hppppp="iabcde", phhhhh="aijklm",
+    phhhhp="aijklb", phhhph="aijkbl", phhhpp="aijkbc", phhphh="aijbkl",
+    phhphp="aijbkc", phhpph="aijbck", phhppp="aijbcd", phphhh="aibjkl",
+    phphhp="aibjkc", phphph="aibjck", phphpp="aibjcd", phpphh="aibcjk",
+    phpphp="aibcjd", phppph="aibcdj", phpppp="aibcde", pphhhh="abijkl",
+    pphhhp="abijkc", pphhph="abijck", pphhpp="abijcd", pphphh="abicjk",
+    pphphp="abicjd", pphpph="abicdj", pphppp="abicde", ppphhh="abcijk",
+    ppphhp="abcijd", ppphph="abcidj", ppphpp="abcide", pppphh="abcdij",
+    pppphp="abcdie", ppppph="abcdei", pppppp="abcdef",
 
-    ppph="abci",
-    pphp="abic",
-    phpp="aibc",
-    hppp="iabc",
-
-    pppp="abcd",
 )

@@ -22,6 +22,16 @@ eom-ccsd/intermediates \
 eom-ccsd/factors \
 eom-ccsd/diagonal \
 
+eom_ccsdt_SOURCES = $(wildcard eom-ccsdt/*.in)
+eom_ccsdt_TARGETS = \
+$(patsubst %.in,%.cpp,$(eom_ccsdt_SOURCES)) \
+$(patsubst %.in,%-fock.cpp,$(eom_ccsdt_SOURCES)) \
+$(patsubst %.in,%-uncomment-fock.cpp,$(eom_ccsdt_SOURCES)) \
+eom-ccsdt/contracted \
+eom-ccsdt/intermediates \
+eom-ccsdt/factors \
+eom-ccsdt/diagonal \
+
 eom_ccd_SOURCES = $(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_SOURCES))
 eom_ccd_TARGETS = \
 $(eom_ccd_SOURCES) \
@@ -84,6 +94,8 @@ ccsd/intermediates:
 eom-ccd: $(eom_ccd_TARGETS) ## Create eom-ccd equations
 
 eom-ccsd: $(eom_ccsd_TARGETS) ## Create eom-ccsd equations
+
+eom-ccsdt: $(eom_ccsdt_TARGETS) ## Create eom-ccsdt equations
 
 ccsd: $(ccsd_TARGETS) ## Create ccsd equations
 
