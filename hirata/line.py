@@ -8,12 +8,25 @@ logging.basicConfig(level=logging.DEBUG)
 class HirataLine(object):
 
     """Implements a complete representation of every line in the Hirata
-    equations"""
+    equations
+
+    Example
+
+    [ + 0.5 ] * Sum ( h2 h4 p1 p3 ) * t ( p1 h2 ) * t ( p3 h4 ) * v ( h2 h4 p1 p3 )
+
+    Prefactors = ['+ 0.5']
+    Postfactors = [
+        'Sum ( h2 h4 p1 p3 ) ',
+        ' t ( p1 h2 ) ',
+        ' t ( p3 h4 ) ',
+        ' v ( h2 h4 p1 p3 )'
+    ]
+
+    """
 
     def __init__(self, line):
         assert(isinstance(line, str))
 
-        self.atoms = None
         self.raw_line = line.replace("\n", "")
         self.prefactors = None
         self.postfactors = None
@@ -24,25 +37,25 @@ class HirataLine(object):
         self.parse()
 
     def parse(self):
+        # prefactors and postfactors
+        self.get_atoms()
+        # here also summation indices are set
         self.get_free_indices()
-        self.get_summation_indices()
-        self.get_postfactors()
-        self.get_prefactors()
 
     def set_free_indices(self, indices):
         self.free_indices = indices
 
     def get_free_indices(self):
-        if self.free_indices is not None: return self.free_indices
-        postfactors = self.get_postfactors()
+        if self.free_indices is not None:
+            return self.free_indices
         summation_indices = self.get_summation_indices() or ""
-        free_indices = ""
-        for factor in postfactors:
-            indices = re.match(r".*\((.*)\).*", factor).group(1).split()
-            for index in indices:
-                if index not in summation_indices and index not in free_indices:
-                    free_indices += " " + index
-        self.free_indices = free_indices
+        summation_set = set(summation_indices.split())
+        regex = re.compile(r".*\((.*)\).*")
+        postfactor_set = set(sum(
+            (regex.match(f).group(1).split() for f in self.get_postfactors()),
+            []
+        ))
+        self.free_indices = " ".join(list(postfactor_set - summation_set))
         self.logger.debug("Free indices = %s", self.free_indices)
         return self.free_indices
 
@@ -66,12 +79,9 @@ class HirataLine(object):
         Thankfully Hirata atomic structures are separated always by asterisks.
         :returns: Atoms
         """
-        if self.postfactors is not None: return self.postfactors
-        try:
-            assert self.raw_line[0] == "["
-        except Exception as e:
-            self.logger.error("The first char of every line should be a [")
-            sys.exit(1)
+        if self.postfactors is not None:
+            return self.postfactors
+        assert self.raw_line[0] == "["
         # Split the end of the prefactor parenthesis
         self.postfactors = re.split(r"\]\s*\*\s*", self.raw_line)
         # Get rid of the other parenthesis
@@ -89,14 +99,10 @@ class HirataLine(object):
     def get_atoms(self):
         """If atoms were not parsed before, parse atoms from raw_line.
         Thankfully Hirata atomic structures are separated always by asterisks.
+
         :returns: Atoms
         """
         return [self.get_prefactors()] + self.get_postfactors()
-
-    def get_printable_atoms(self):
-        """Get atoms in the form that should be printed according to hirata
-        """
-        return "[ " + "".join(self.get_prefactors()) + " ] * " + " * ".join(self.get_postfactors())
 
     def set_prefactors(self, prefactors):
         self.prefactors = prefactors
@@ -107,3 +113,5 @@ class HirataLine(object):
         if self.prefactors is not None:
             return self.prefactors
 
+    def __repr__(self):
+        return self.raw_line

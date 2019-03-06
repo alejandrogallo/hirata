@@ -15,7 +15,7 @@ def test_1():
     assert len(h_line.get_prefactors()) == 4
     assert len(h_line.get_postfactors()) == 2
     assert h_line.get_summation_indices() == None
-    assert h_line.get_free_indices() == " h3 p2 h4 p1"
+    assert set(h_line.get_free_indices().split()) == set("p1 h4 p2 h3".split())
     assert get_hp_combination(h_line.get_postfactors()[1]) == "hp"
 
     cc4s_line = hirata_to_cc4s(h_line)
@@ -32,7 +32,7 @@ def test_2():
     assert len(h_line.get_prefactors()) == 2
     assert len(h_line.get_postfactors()) == 3
     assert h_line.get_summation_indices() == " h5 "
-    assert h_line.get_free_indices() == " h3 h4 p2 p1"
+    assert set(h_line.get_free_indices().split()) == set("h3 h4 p2 p1".split())
     assert get_hp_combination(h_line.get_postfactors()[1]) == "hhhp"
 
     cc4s_line = hirata_to_cc4s(h_line)
@@ -49,7 +49,7 @@ def test_3():
     assert len(h_line.get_prefactors()) == 1
     assert len(h_line.get_postfactors()) == 4
     assert h_line.get_summation_indices() == " p3 p4 h5 h6 "
-    assert h_line.get_free_indices() == " h2 p1"
+    assert set(h_line.get_free_indices().split()) == set(" h2 p1".split())
     assert get_hp_combination(h_line.get_postfactors()[1]) == "pphh"
 
     cc4s_line = hirata_to_cc4s(h_line)
@@ -66,7 +66,7 @@ def test_4():
     assert len(h_line.get_prefactors()) == 9
     assert len(h_line.get_postfactors()) == 6
     assert h_line.get_summation_indices() == " h9 h10 p7 p8 "
-    #assert(h_line.get_free_indices() == " p4 p5 h3 p6 h1 h2")
+    #assert(h_line.get_free_indices() == "p4 p5 h3 p6 h1 h2")
     assert get_hp_combination(h_line.get_postfactors()[1]) == "ph"
     assert get_hp_combination(h_line.get_postfactors()[2]) == "ph"
     assert get_hp_combination(h_line.get_postfactors()[3]) == "ph"

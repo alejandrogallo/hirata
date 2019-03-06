@@ -124,7 +124,7 @@ def hirata_to_cc4s(hirata_line):
     )
     logger.debug("Free indices= %s", line.get_free_indices())
 
-    logger.debug(" Atoms = %s", line.get_printable_atoms())
+    logger.debug(" Atoms = %s", line)
 
     return line
 
@@ -208,7 +208,7 @@ def process_file(args):
             removed_cause_fock = True
             lines = ["// <FOCK> " + li for li in lines]
         result_lines.append("// orig  : %s" % line.replace("\n", ""))
-        result_lines.append("// conv  : %s" % cc4s_line.get_printable_atoms())
+        result_lines.append("// conv  : %s" % cc4s_line)
         result_lines.append("// free  : %s" % cc4s_line.get_free_indices())
         result_lines.append("// summed: %s" % cc4s_line.get_summation_indices())
         if args.contract_with:
