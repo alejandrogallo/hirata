@@ -27,36 +27,10 @@ def transform_tensor_indices(atom):
     return atom
 
 
-def get_hp_combination(atom):
-    """Get if tensor is of type hhhh, hhpp, hh, hp etc...
-    """
-    return "".join(re.findall(r"([hp])[0-9]+", atom))
 
 
-def get_converted_hp_combination(atom):
-    """Get if tensor is of type hp, hhpp, hh, hp etc...
-    """
-    hp = get_hp_combination(atom)
-    for pppp in conf.TENSOR_INDICES_TRANSLATION.keys():
-        abij = conf.TENSOR_INDICES_TRANSLATION[pppp]
-        if hp[0:len(hp)] == pppp[0:len(hp)]:
-            return abij[0: len(hp)]
-    return hp
 
 
-def translate_tensor_names(atom):
-    """Translate t( h p ) -> Tia
-        which are defined in the configuration file.
-    """
-    for name in conf.TENSOR_NAME_TRANSLATON:
-        converted_index = get_converted_hp_combination(atom)
-        tensor_name = conf.TENSOR_NAME_TRANSLATON[name]
-        atom = re.sub(
-            name,
-            tensor_name.format(hpindices=converted_index),
-            atom
-        )
-    return atom
 
 
 def permute_indices(index, start_indices, permuted_indices):
@@ -83,50 +57,6 @@ def permute_cc4s_index(atom, start_indices, permuted_indices):
     # print("new_index     : %s " % (new_index))
     new_line = atom.replace(index, new_index)
     return new_line
-
-
-def hirata_to_cc4s(hirata_line):
-    """Convert a hirata line to cc4s
-    """
-    import copy
-    line = copy.copy(hirata_line)
-    logger = logging.getLogger("hirata_to_cc4s")
-
-    # Post factors
-    logger.debug("Doing postfactors")
-    postfactors = []
-    for factor in line.get_postfactors():
-        if re.match(r"Sum", factor):
-            continue
-        factor = translate_tensor_names(factor)
-        factor = translate_indices(factor)
-        factor = transform_tensor_indices(factor)
-        postfactors.append(factor)
-    line.set_postfactors(postfactors)
-    logger.debug("Postfactors = %s", line.get_postfactors())
-
-    # Pre factors
-    logger.debug("Doing prefactors")
-    prefactors = []
-    for factor in line.get_prefactors():
-        factor = translate_indices(factor)
-        prefactors.append(factor)
-    line.set_prefactors(prefactors)
-    logger.debug("Prefactors = %s", line.get_prefactors())
-
-    if line.get_summation_indices() is not None:
-        line.set_summation_indices(
-            translate_indices(line.get_summation_indices())
-        )
-        logger.debug("Summation indices= %s", line.get_summation_indices())
-    line.set_free_indices(
-        translate_indices(line.get_free_indices())
-    )
-    logger.debug("Free indices= %s", line.get_free_indices())
-
-    logger.debug(" Atoms = %s", line)
-
-    return line
 
 
 def cc4s_to_cpp(cc4s_line):
@@ -208,7 +138,7 @@ def process_file(args):
             removed_cause_fock = True
             lines = ["// <FOCK> " + li for li in lines]
         result_lines.append("// orig  : %s" % line.replace("\n", ""))
-        result_lines.append("// conv  : %s" % cc4s_line)
+        result_lines.append("// conv  : %s" % cc4s_line.get_printable_atoms())
         result_lines.append("// free  : %s" % cc4s_line.get_free_indices())
         result_lines.append("// summed: %s" % cc4s_line.get_summation_indices())
         if args.contract_with:

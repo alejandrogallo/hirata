@@ -12,4 +12,4 @@
 
 #make clean ;
 #make eom-ccsd/factors
-./env/bin/pytest hirata tests/ --pdb --cov=hirata
+./env/bin/pytest -v hirata tests/ --pdb --cov=hirata

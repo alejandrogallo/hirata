@@ -1,6 +1,7 @@
 import logging
 from hirata import HirataLine
 from hirata.utils import *
+from hirata.cc4s import *
 import copy
 logging.basicConfig(level=logging.DEBUG)
 
@@ -18,8 +19,8 @@ def test_1():
     assert set(h_line.get_free_indices().split()) == set("p1 h4 p2 h3".split())
     assert get_hp_combination(h_line.get_postfactors()[1]) == "hp"
 
-    cc4s_line = hirata_to_cc4s(h_line)
-    lines = cc4s_to_cpp(cc4s_line)
+    # cc4s_line = hirata_to_cc4s(h_line)
+    # lines = cc4s_to_cpp(cc4s_line)
 
 def test_2():
 
@@ -35,8 +36,8 @@ def test_2():
     assert set(h_line.get_free_indices().split()) == set("h3 h4 p2 p1".split())
     assert get_hp_combination(h_line.get_postfactors()[1]) == "hhhp"
 
-    cc4s_line = hirata_to_cc4s(h_line)
-    lines = cc4s_to_cpp(cc4s_line)
+    # cc4s_line = hirata_to_cc4s(h_line)
+    # lines = cc4s_to_cpp(cc4s_line)
 
 def test_3():
 
@@ -52,8 +53,8 @@ def test_3():
     assert set(h_line.get_free_indices().split()) == set(" h2 p1".split())
     assert get_hp_combination(h_line.get_postfactors()[1]) == "pphh"
 
-    cc4s_line = hirata_to_cc4s(h_line)
-    lines = cc4s_to_cpp(cc4s_line)
+    # cc4s_line = hirata_to_cc4s(h_line)
+    # lines = cc4s_to_cpp(cc4s_line)
 
 def test_4():
 
@@ -76,6 +77,6 @@ def test_4():
     assert get_hp_combination(h_line.get_postfactors()[4]) == "pphh"
     assert get_hp_combination(h_line.get_postfactors()[5]) == "hhpp"
 
-    cc4s_line = hirata_to_cc4s(h_line)
-    lines = cc4s_to_cpp(cc4s_line)
+    # cc4s_line = hirata_to_cc4s(h_line)
+    # lines = cc4s_to_cpp(cc4s_line)
 

@@ -1,4 +1,4 @@
-from hirata import HirataLine
+from hirata import HirataLine, Cc4sLine
 
 
 def test_ccsdt():
@@ -43,3 +43,9 @@ def test_ccsdt():
         set(hl.free_indices.split()) == set('h11 h2 h3 p4 p5 p6'.split())
     )
     assert(str(hl) == rawline.replace('\n', ''))
+
+    cc4sline = Cc4sLine(hl)
+    # assert(
+        # cc4sline.postfactors ==
+        # ['Tabcijk["ghdIjk"]', 'Tabij["efJK"]', 'Vijab["IJgh"]']
+    # )

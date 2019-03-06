@@ -42,9 +42,6 @@ class HirataLine(object):
         # here also summation indices are set
         self.get_free_indices()
 
-    def set_free_indices(self, indices):
-        self.free_indices = indices
-
     def get_free_indices(self):
         if self.free_indices is not None:
             return self.free_indices
@@ -59,9 +56,6 @@ class HirataLine(object):
         self.logger.debug("Free indices = %s", self.free_indices)
         return self.free_indices
 
-    def set_summation_indices(self, indices):
-        self.summation_indices = indices
-
     def get_summation_indices(self):
         if self.summation_indices is not None: return self.summation_indices
         for atom in self.get_atoms()[1:]:
@@ -70,9 +64,6 @@ class HirataLine(object):
                 self.summation_indices = m.group(1)
                 self.logger.debug("Summation indices = %s", self.summation_indices)
                 return self.summation_indices
-
-    def set_postfactors(self, postfactors):
-        self.postfactors = postfactors
 
     def get_postfactors(self):
         """If postfactors were not parsed before, parse postfactors from raw_line.
@@ -88,7 +79,7 @@ class HirataLine(object):
         self.postfactors[0] = self.postfactors[0].replace("[", "")
         # Get rid of empty strings
         self.postfactors[0] = [s for s in re.split(r"\s*([+-][^+-]+)\s*", self.postfactors[0]) if len(s)]
-        self.set_prefactors(self.postfactors[0])
+        self.prefactors = self.postfactors[0]
         self.logger.debug("prefactors = %s", self.prefactors)
         # Split the rest of the string in terms of products with * operator
         post_factor = self.postfactors.pop(1)
@@ -104,14 +95,10 @@ class HirataLine(object):
         """
         return [self.get_prefactors()] + self.get_postfactors()
 
-    def set_prefactors(self, prefactors):
-        self.prefactors = prefactors
-
     def get_prefactors(self):
         # get first postfactors
         self.get_postfactors()
-        if self.prefactors is not None:
-            return self.prefactors
+        return self.prefactors
 
     def __repr__(self):
         return self.raw_line
