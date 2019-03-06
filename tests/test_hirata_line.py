@@ -40,6 +40,6 @@ def test_ccsdt():
     )
     assert(hl.summation_indices == ' h9 h10 p7 p8 ')
     assert(
-        set(hl.free_indices.split()) == {'h11', 'h2', 'h3', 'p4', 'p5', 'p6'}
+        set(hl.free_indices.split()) == set('h11 h2 h3 p4 p5 p6'.split())
     )
     assert(str(hl) == rawline.replace('\n', ''))
