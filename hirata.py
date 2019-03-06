@@ -204,7 +204,8 @@ def permute_cc4s_index(atom, start_indices, permuted_indices):
 def hirata_to_cc4s(hirata_line):
     """Convert a hirata line to cc4s
     """
-    import copy; line = copy.copy(hirata_line)
+    import copy
+    line = copy.copy(hirata_line)
     logger = logging.getLogger("hirata_to_cc4s")
 
     # Post factors
