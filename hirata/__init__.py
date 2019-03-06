@@ -179,11 +179,14 @@ def translate_tensor_names(atom):
 
 
 def permute_indices(index, start_indices, permuted_indices):
-    import string
+    try:
+        from string import maketrans
+    except:
+        maketrans = str.maketrans
     assert(len(start_indices) == len(permuted_indices))
     new_index = index
     changed=[]
-    trans_table = string.maketrans(start_indices, permuted_indices)
+    trans_table = maketrans(start_indices, permuted_indices)
     new_index = index.translate(trans_table)
     return new_index
 

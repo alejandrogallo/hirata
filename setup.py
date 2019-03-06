@@ -13,6 +13,7 @@ setup(
     install_requires=[],
     long_description=long_description,
     keywords=[],
+    packages=["hirata"],
     entry_points=dict(
         console_scripts=[
             'hirata=hirata.main:main'
