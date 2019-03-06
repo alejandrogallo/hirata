@@ -2,11 +2,30 @@ import re
 import copy
 from .line import HirataLine
 import hirata.conf as conf
-from .utils import (
-    translate_indices,
-    transform_tensor_indices
-)
 import logging
+
+
+def transform_tensor_indices(atom):
+    """For example (a b i j) -> ["abij"]
+    """
+    atom = re.sub(" ", "", atom)
+    atom = re.sub("\(", "[\"", atom)
+    atom = re.sub("\)", "\"]", atom)
+    return atom
+
+
+def translate_indices(atom):
+    """Translate h1 -> some indices
+    which are defined in the configuration file.
+    """
+    for index_trans in [conf.PARTICLE_INDICES, conf.HOLE_INDICES]:
+        for index in index_trans.keys():
+            atom = re.sub(
+                r"({index})([ \)])".format(index=index),
+                r"{newindex}\2".format(newindex=index_trans[index]),
+                atom
+            )
+    return atom
 
 
 def get_hp_combination(atom):
@@ -87,3 +106,30 @@ class Cc4sLine:
             " ".join(self.prefactors),
             " *prefactors ".join(self.postfactors),
         )
+
+
+    def to_cpp(self):
+        """Convert a cc4s line class into cpp code
+        """
+        logger = logging.getLogger("cc4s_to_cpp")
+        result = []
+        result_line = ""
+        for prefactor in self.prefactors:
+            if not re.match(r".*P.*", prefactor):
+                # Identity
+                start_indices = "a"
+                permuted_indices = "a"
+            else:
+                start_indices = re.match(r".*\((.*)=>.*", prefactor)\
+                    .group(1).replace(" ", "")
+                permuted_indices = re.match(r".*=>(.*)\).*", prefactor)\
+                    .group(1).replace(" ", "")
+            prefactor_val = re.sub(r"\*\sP.*", "", prefactor)
+            logger.debug("Start indices = %s", start_indices)
+            logger.debug("Permuted indices = %s", permuted_indices)
+            logger.debug("Prefactor value = %s", prefactor_val)
+            result_line = "( %s )" % prefactor_val
+            for postfactor in self.postfactors:
+                result_line += " * %s" % permute_cc4s_index(postfactor, start_indices, permuted_indices)
+            result.append(result_line+";")
+        return result

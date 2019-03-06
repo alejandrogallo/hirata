@@ -45,7 +45,9 @@ def test_ccsdt():
     assert(str(hl) == rawline.replace('\n', ''))
 
     cc4sline = Cc4sLine(hl)
-    # assert(
-        # cc4sline.postfactors ==
-        # ['Tabcijk["ghdIjk"]', 'Tabij["efJK"]', 'Vijab["IJgh"]']
-    # )
+    assert(len(cc4sline.postfactors) == 3)
+    assert(len(cc4sline.prefactors) == 9)
+    assert(
+        cc4sline.postfactors ==
+        ['Tabcijk["ghdIjk"]', 'Tabij["efJK"]', 'Vijab["IJgh"]']
+    )

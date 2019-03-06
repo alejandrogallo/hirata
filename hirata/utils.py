@@ -7,32 +7,6 @@ logger = logging.getLogger("main")
 logging.basicConfig(level=logging.DEBUG)
 
 
-def translate_indices(atom):
-    """Translate h1 -> some indices
-    which are defined in the configuration file.
-    """
-    for index_trans in [conf.PARTICLE_INDICES, conf.HOLE_INDICES]:
-        for index in index_trans.keys():
-            if index_trans[index] is not None:
-                atom = re.sub(index, index_trans[index], atom)
-    return atom
-
-
-def transform_tensor_indices(atom):
-    """For example (a b i j) -> ["abij"]
-    """
-    atom = re.sub(" ", "", atom)
-    atom = re.sub("\(", "[\"", atom)
-    atom = re.sub("\)", "\"]", atom)
-    return atom
-
-
-
-
-
-
-
-
 def permute_indices(index, start_indices, permuted_indices):
     try:
         from string import maketrans
@@ -57,34 +31,6 @@ def permute_cc4s_index(atom, start_indices, permuted_indices):
     # print("new_index     : %s " % (new_index))
     new_line = atom.replace(index, new_index)
     return new_line
-
-
-def cc4s_to_cpp(cc4s_line):
-    """Convert a cc4s line class into cpp code
-    """
-    logger = logging.getLogger("cc4s_to_cpp")
-    result = []
-    result_line = ""
-    for prefactor in cc4s_line.get_prefactors():
-        if not re.match(r".*P.*", prefactor):
-            # Identity
-            start_indices = "a"
-            permuted_indices = "a"
-        else:
-            start_indices = re.match(r".*\((.*)=>.*", prefactor)\
-                .group(1).replace(" ", "")
-            permuted_indices = re.match(r".*=>(.*)\).*", prefactor)\
-                .group(1).replace(" ", "")
-        prefactor_val = re.sub(r"\*\sP.*", "", prefactor)
-        logger.debug("Start indices = %s", start_indices)
-        logger.debug("Permuted indices = %s", permuted_indices)
-        logger.debug("Prefactor value = %s", prefactor_val)
-        result_line = "( %s )" % prefactor_val
-        for postfactor in cc4s_line.get_postfactors():
-            result_line += " * %s" % permute_cc4s_index(postfactor, start_indices, permuted_indices)
-        result.append(result_line+";")
-    return result
-
 
 
 def get_tensor_name_with_indices(name, hp_partition, indices):
