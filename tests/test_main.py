@@ -66,7 +66,10 @@ def test_4():
     assert len(h_line.get_prefactors()) == 9
     assert len(h_line.get_postfactors()) == 6
     assert h_line.get_summation_indices() == " h9 h10 p7 p8 "
-    #assert(h_line.get_free_indices() == "p4 p5 h3 p6 h1 h2")
+    assert(
+        set(h_line.get_free_indices().split()) ==
+        set("p4 p5 h3 p6 h1 h2".split())
+    )
     assert get_hp_combination(h_line.get_postfactors()[1]) == "ph"
     assert get_hp_combination(h_line.get_postfactors()[2]) == "ph"
     assert get_hp_combination(h_line.get_postfactors()[3]) == "ph"
