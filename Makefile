@@ -2,21 +2,15 @@
 ccsd_SOURCES = $(wildcard ccsd/*.in)
 ccsd_TARGETS = \
 $(patsubst %.in,%.cpp,$(ccsd_SOURCES)) \
-$(patsubst %.in,%-fock.cpp,$(ccsd_SOURCES)) \
-$(patsubst %.in,%-uncomment-fock.cpp,$(ccsd_SOURCES)) \
 ccsd/intermediates \
 
 ccsdt_SOURCES = $(wildcard ccsdt/*.in)
 ccsdt_TARGETS = \
 $(patsubst %.in,%.cpp,$(ccsdt_SOURCES)) \
-$(patsubst %.in,%-fock.cpp,$(ccsdt_SOURCES)) \
-$(patsubst %.in,%-uncomment-fock.cpp,$(ccsdt_SOURCES))
 
 eom_ccsd_SOURCES = $(wildcard eom-ccsd/*.in)
 eom_ccsd_TARGETS = \
 $(patsubst %.in,%.cpp,$(eom_ccsd_SOURCES)) \
-$(patsubst %.in,%-fock.cpp,$(eom_ccsd_SOURCES)) \
-$(patsubst %.in,%-uncomment-fock.cpp,$(eom_ccsd_SOURCES)) \
 eom-ccsd/contracted \
 eom-ccsd/intermediates \
 eom-ccsd/factors \
@@ -25,8 +19,6 @@ eom-ccsd/diagonal \
 eom_ccsdt_SOURCES = $(wildcard eom-ccsdt/*.in)
 eom_ccsdt_TARGETS = \
 $(patsubst %.in,%.cpp,$(eom_ccsdt_SOURCES)) \
-$(patsubst %.in,%-fock.cpp,$(eom_ccsdt_SOURCES)) \
-$(patsubst %.in,%-uncomment-fock.cpp,$(eom_ccsdt_SOURCES)) \
 eom-ccsdt/contracted \
 eom-ccsdt/intermediates \
 eom-ccsdt/factors \
@@ -40,20 +32,14 @@ $(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_TARGETS)) \
 mbpt1_SOURCES = $(wildcard mbpt1/*.in)
 mbpt1_TARGETS = \
 $(patsubst %.in,%.cpp,$(mbpt1_SOURCES)) \
-$(patsubst %.in,%-fock.cpp,$(mbpt1_SOURCES)) \
-$(patsubst %.in,%-uncomment-fock.cpp,$(mbpt1_SOURCES))
 
 mbpt2_SOURCES = $(wildcard mbpt2/*.in)
 mbpt2_TARGETS = \
 $(patsubst %.in,%.cpp,$(mbpt2_SOURCES)) \
-$(patsubst %.in,%-fock.cpp,$(mbpt2_SOURCES)) \
-$(patsubst %.in,%-uncomment-fock.cpp,$(mbpt2_SOURCES))
 
 lambda_ccsd_SOURCES = $(wildcard lambda-ccsd/*.in)
 lambda_ccsd_TARGETS = \
 $(patsubst %.in,%.cpp,$(lambda_ccsd_SOURCES)) \
-$(patsubst %.in,%-fock.cpp,$(lambda_ccsd_SOURCES)) \
-$(patsubst %.in,%-uncomment-fock.cpp,$(lambda_ccsd_SOURCES))
 
 
 ifdef QUIET
@@ -108,13 +94,7 @@ mbpt2: $(mbpt2_TARGETS) ## Create mbpt2 equations
 lambda_ccsd: $(lambda_ccsd_TARGETS) ## Create lambda ccsd equations
 
 %.cpp: %.in
-	./hirata.py -o $@ -f $< $(FD_OUTPUT)
-
-%-fock.cpp: %.in
-	./hirata.py --fock -o $@ -f $< $(FD_OUTPUT)
-
-%-uncomment-fock.cpp: %.in
-	./hirata.py --no-comment --fock -o $@ -f $< $(FD_OUTPUT)
+	hirata -o $@ -f $< $(FD_OUTPUT)
 
 test:
 	python -m unittest discover tests/

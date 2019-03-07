@@ -116,8 +116,8 @@ class Cc4sLine:
 
     def __repr__(self):
         return "[ {prefactors} ] * ( {postfactors} )".format(
-            " ".join(self.prefactors),
-            " *prefactors ".join(self.postfactors),
+            prefactors=" ".join(self.prefactors),
+            postfactors=" *prefactors ".join(self.postfactors),
         )
 
 
