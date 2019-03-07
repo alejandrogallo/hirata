@@ -4,7 +4,6 @@ import re
 import sys
 
 logger = logging.getLogger("main")
-logging.basicConfig(level=logging.DEBUG)
 
 
 def permute_indices(index, start_indices, permuted_indices):

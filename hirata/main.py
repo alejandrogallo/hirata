@@ -6,6 +6,9 @@ from .utils import get_tensor_name_with_indices
 import re
 import sys
 
+logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(filename="hirata.log", level=logging.DEBUG)
+
 
 def process_file(args):
     logger = logging.getLogger("main")

@@ -3,7 +3,6 @@ import re
 import sys
 
 logger = logging.getLogger("main")
-logging.basicConfig(level=logging.DEBUG)
 
 class HirataLine(object):
 
