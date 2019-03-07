@@ -2,6 +2,9 @@ import argparse
 import logging
 from .line import HirataLine
 from .cc4s import Cc4sLine
+from .utils import get_tensor_name_with_indices
+import re
+import sys
 
 
 def process_file(args):
@@ -25,7 +28,7 @@ def process_file(args):
             tensor_name = get_tensor_name_with_indices(
                 args.contract_with,
                 args.with_indices,
-                cc4s_line.get_free_indices().replace(" ", "")
+                cc4s_line.free_indices.replace(" ", "")
             )
             logger.debug("Contracting with tensor %s" % tensor_name)
             lines = [
@@ -36,9 +39,11 @@ def process_file(args):
             with open(args.python_tuples_out, 'a+') as fd:
                 for line in lines:
                     fd.write(
-                    str(
-                        line.replace(' ', '').replace(';', '').split('*')[1:]
-                    )
+                        str(
+                            line.replace(' ', '')
+                                .replace(';', '')
+                                .split('*')[1:]
+                        )
                     )
                     fd.write('\n')
         if args.prepend:
@@ -48,7 +53,7 @@ def process_file(args):
             if args.with_indices:
                 indices = args.with_indices
             tensor_name = args.with_intermediates
-            free_indices = cc4s_line.get_free_indices().replace(" ", "")
+            free_indices = cc4s_line.free_indices.replace(" ", "")
             tensor = get_tensor_name_with_indices(
                 tensor_name,
                 indices,
@@ -63,7 +68,9 @@ def process_file(args):
         result_lines.append("")
     if args.no_comments:
         logger.debug("Getting rid of comments")
-        result_lines = [li for li in result_lines if not re.match(r"^//.*$", li)]
+        result_lines = [
+            li for li in result_lines if not re.match(r"^//.*$", li)
+        ]
     return result_lines
 
 

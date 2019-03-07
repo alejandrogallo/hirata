@@ -109,7 +109,7 @@ class Cc4sLine:
                 self.hl.get_summation_indices()
             )
             logger.debug("Summation indices= %s", self.summation_indices)
-        self.free_indices = translate_indices(self.hl.get_free_indices() + " ")
+        self.free_indices = translate_indices(self.hl.free_indices + " ")
         logger.debug("Free indices= %s", self.free_indices)
 
         logger.debug(" Atoms = %s", self)
