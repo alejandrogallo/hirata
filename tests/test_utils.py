@@ -10,3 +10,4 @@ def test_indices():
     assert permute_indices("abcd", "aa", "aa") == "abcd"
 
 
+
