@@ -2,8 +2,21 @@ import re
 import copy
 from .line import HirataLine
 import hirata.conf as conf
+from .utils import permute_indices
 import logging
 
+
+def permute_cc4s_index(atom, start_indices, permuted_indices):
+    # print(atom)
+    ii = re.match(r".*\"(.*)\".*", atom)
+    index = ii.group(1)
+    istart = ii.start()
+    iend = ii.end()
+    new_index = permute_indices(index, start_indices, permuted_indices)
+    # print("index         : %s (%s - %s)" % (index, istart, iend))
+    # print("new_index     : %s " % (new_index))
+    new_line = atom.replace(index, new_index)
+    return new_line
 
 def transform_tensor_indices(atom):
     """For example (a b i j) -> ["abij"]
@@ -96,7 +109,7 @@ class Cc4sLine:
                 self.hl.get_summation_indices()
             )
             logger.debug("Summation indices= %s", self.summation_indices)
-        self.free_indices = translate_indices(self.hl.get_free_indices())
+        self.free_indices = translate_indices(self.hl.get_free_indices() + " ")
         logger.debug("Free indices= %s", self.free_indices)
 
         logger.debug(" Atoms = %s", self)
@@ -120,16 +133,24 @@ class Cc4sLine:
                 start_indices = "a"
                 permuted_indices = "a"
             else:
-                start_indices = re.match(r".*\((.*)=>.*", prefactor)\
-                    .group(1).replace(" ", "")
-                permuted_indices = re.match(r".*=>(.*)\).*", prefactor)\
-                    .group(1).replace(" ", "")
+                start_indices = (
+                    re.match(r".*\((.*)=>.*", prefactor).group(1)
+                    .replace(" ", "")
+                )
+                permuted_indices = (
+                    re.match(r".*=>(.*)\).*", prefactor).group(1)
+                    .replace(" ", "")
+                )
             prefactor_val = re.sub(r"\*\sP.*", "", prefactor)
             logger.debug("Start indices = %s", start_indices)
             logger.debug("Permuted indices = %s", permuted_indices)
             logger.debug("Prefactor value = %s", prefactor_val)
             result_line = "( %s )" % prefactor_val
             for postfactor in self.postfactors:
-                result_line += " * %s" % permute_cc4s_index(postfactor, start_indices, permuted_indices)
+                result_line += " * %s" % permute_cc4s_index(
+                    postfactor,
+                    start_indices,
+                    permuted_indices
+                )
             result.append(result_line+";")
         return result

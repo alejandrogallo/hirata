@@ -21,11 +21,6 @@ def test_transform_tensor_indices():
 
 
 def test_translate_indices():
-    import re
-    # assert(not re.match(r"(h1)([^0-9]*)$", "h10"))
-    # assert(re.match(r"(h10)([^0-9]*)$", "h10"))
-    # assert(re.match(r"(h1)([^0-9]+)", "t(h1 h3)"))
-    # assert(not re.match(r"(h1)([^0-9]*)", "t(h10 h3)"))
     for case in [conf.PARTICLE_INDICES, conf.HOLE_INDICES]:
         for hp in case.keys():
             assert(translate_indices(hp+" ").strip() == case[hp])
@@ -38,8 +33,8 @@ def test_translate_indices():
         == "as dfasdf adfasdf (M i k D a)"
     )
 
-def test_translate_tensor_names():
 
+def test_translate_tensor_names(): 
     assert(
         translate_tensor_names("t(h1 h3 p2 p1)")
         == "Tijab(h1 h3 p2 p1)"
@@ -48,4 +43,15 @@ def test_translate_tensor_names():
     assert(
         translate_tensor_names("t(h11 h3 p12 p1 h3 p3)")
         == "Tijabkc(h11 h3 p12 p1 h3 p3)"
+    )
+
+
+def test_permute_cc4s_index():
+    assert(
+        permute_cc4s_index('Tabij["ai"]', 'ai', 'ia')
+        == 'Tabij["ia"]'
+    )
+    assert(
+        permute_cc4s_index('Tabij["ak"]', 'ac', 'ca')
+        == 'Tabij["ck"]'
     )

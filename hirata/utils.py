@@ -20,19 +20,6 @@ def permute_indices(index, start_indices, permuted_indices):
     return new_index
 
 
-def permute_cc4s_index(atom, start_indices, permuted_indices):
-    # print(atom)
-    ii = re.match(r".*\"(.*)\".*", atom)
-    index = ii.group(1)
-    istart = ii.start()
-    iend = ii.end()
-    new_index = permute_indices(index, start_indices, permuted_indices)
-    # print("index         : %s (%s - %s)" % (index, istart, iend))
-    # print("new_index     : %s " % (new_index))
-    new_line = atom.replace(index, new_index)
-    return new_line
-
-
 def get_tensor_name_with_indices(name, hp_partition, indices):
     """For example it should do
     T , abij, klbc -> Tabij["bclk"]
@@ -133,4 +120,3 @@ def process_file(args):
         logger.debug("Getting rid of comments")
         result_lines = [li for li in result_lines if not re.match(r"^//.*$", li)]
     return result_lines
-

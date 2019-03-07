@@ -47,7 +47,25 @@ def test_ccsdt():
     cc4sline = Cc4sLine(hl)
     assert(len(cc4sline.postfactors) == 3)
     assert(len(cc4sline.prefactors) == 9)
+    assert(cc4sline.summation_indices == " I J g h ")
+    assert(set(cc4sline.free_indices.split()) == set(" K j k d e f ".split()))
     assert(
         cc4sline.postfactors ==
         ['Tabcijk["ghdIjk"]', 'Tabij["efJK"]', 'Vijab["IJgh"]']
     )
+    assert(
+        cc4sline.prefactors ==
+        [
+            '+ 0.5 ',
+            '- 0.5 * P( d e f j k K => e d f j k K ) ',
+            '- 0.5 * P( d f e j k K => f d e j k K ) ',
+            '+ 0.5 * P( d e f k j K => d e f K k j ) ',
+            '- 0.5 * P( d e f k j K => e d f K k j ) ',
+            '- 0.5 * P( d f e k j K => f d e K k j ) ',
+            '+ 0.5 * P( d e f j k K => d e f K j k ) ',
+            '- 0.5 * P( d e f j k K => e d f K j k ) ',
+            '- 0.5 * P( d f e j k K => f d e K j k ) '
+        ]
+    )
+
+    cpp_lines = cc4sline.to_cpp()
