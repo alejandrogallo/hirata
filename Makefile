@@ -1,12 +1,7 @@
-
-ccsd_SOURCES = $(wildcard ccsd/*.in)
-ccsd_TARGETS = \
-$(patsubst %.in,%.cpp,$(ccsd_SOURCES)) \
-ccsd/intermediates \
-
-ccsdt_SOURCES = $(wildcard ccsdt/*.in)
-ccsdt_TARGETS = \
-$(patsubst %.in,%.cpp,$(ccsdt_SOURCES)) \
+include mbpt1/config.mk
+include mbpt2/config.mk
+include ccsd/config.mk
+include ccsdt/config.mk
 
 eom_ccsd_SOURCES = $(wildcard eom-ccsd/*.in)
 eom_ccsd_TARGETS = \
@@ -29,13 +24,7 @@ eom_ccd_TARGETS = \
 $(eom_ccd_SOURCES) \
 $(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_TARGETS)) \
 
-mbpt1_SOURCES = $(wildcard mbpt1/*.in)
-mbpt1_TARGETS = \
-$(patsubst %.in,%.cpp,$(mbpt1_SOURCES)) \
 
-mbpt2_SOURCES = $(wildcard mbpt2/*.in)
-mbpt2_TARGETS = \
-$(patsubst %.in,%.cpp,$(mbpt2_SOURCES)) \
 
 lambda_ccsd_SOURCES = $(wildcard lambda-ccsd/*.in)
 lambda_ccsd_TARGETS = \
@@ -82,14 +71,6 @@ eom-ccd: $(eom_ccd_TARGETS) ## Create eom-ccd equations
 eom-ccsd: $(eom_ccsd_TARGETS) ## Create eom-ccsd equations
 
 eom-ccsdt: $(eom_ccsdt_TARGETS) ## Create eom-ccsdt equations
-
-ccsd: $(ccsd_TARGETS) ## Create ccsd equations
-
-ccsdt: $(ccsdt_TARGETS) ## Create ccsdt equations
-
-mbpt1: $(mbpt1_TARGETS) ## Create mbpt1 equations
-
-mbpt2: $(mbpt2_TARGETS) ## Create mbpt2 equations
 
 lambda_ccsd: $(lambda_ccsd_TARGETS) ## Create lambda ccsd equations
 
