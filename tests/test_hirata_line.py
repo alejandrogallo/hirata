@@ -69,3 +69,16 @@ def test_ccsdt():
     )
 
     cpp_lines = cc4sline.to_cpp()
+    assert(cpp_lines ==
+    [
+        '( + 0.5  ) * Tabcijk["ghdIjk"] * Tabij["efJK"] * Vijab["IJgh"];',
+        '( - 0.5  ) * Tabcijk["gheIjk"] * Tabij["dfJK"] * Vijab["IJgh"];',
+        '( - 0.5  ) * Tabcijk["ghfIjk"] * Tabij["edJK"] * Vijab["IJgh"];',
+        '( + 0.5  ) * Tabcijk["ghdIkK"] * Tabij["efJj"] * Vijab["IJgh"];',
+        '( - 0.5  ) * Tabcijk["gheIkK"] * Tabij["dfJj"] * Vijab["IJgh"];',
+        '( - 0.5  ) * Tabcijk["ghfIkK"] * Tabij["edJj"] * Vijab["IJgh"];',
+        '( + 0.5  ) * Tabcijk["ghdIKj"] * Tabij["efJk"] * Vijab["IJgh"];',
+        '( - 0.5  ) * Tabcijk["gheIKj"] * Tabij["dfJk"] * Vijab["IJgh"];',
+        '( - 0.5  ) * Tabcijk["ghfIKj"] * Tabij["edJk"] * Vijab["IJgh"];'
+    ])
+
