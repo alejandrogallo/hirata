@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 SCRIPT_DIR=$(readlink -f $(dirname $0))
-hirata=${SCRIPT_DIR}/../../hirata.py
+hirata=hirata
 
 equations_folder=$1
 cd ${equations_folder}
