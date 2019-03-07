@@ -7,3 +7,6 @@ eom-ccsdt/factors \
 eom-ccsdt/diagonal \
 
 eom-ccsdt: $(eom_ccsdt_TARGETS) ## Create eom-ccsdt equations
+
+clean-eom-ccsdt:
+	-@rm -v $(eom_ccsdt_TARGETS)

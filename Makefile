@@ -1,9 +1,9 @@
 include mbpt1/config.mk
 include mbpt2/config.mk
 include ccsd/config.mk
-include eom-ccsd//config.mk
+include eom-ccsd/config.mk
 include ccsdt/config.mk
-include eom-ccsdt//config.mk
+include eom-ccsdt/config.mk
 
 ifdef QUIET
 FD_OUTPUT = >> log.txt 2>&1
@@ -12,6 +12,7 @@ endif
 .DEFAULT_GOAL = help
 
 ALL_EQS = ccsd ccsdt eom-ccsd eom-ccsdt lambda-ccsd mbpt1 mbpt2
+CLEAN_TARGETS = $(patsubst %,clean-%,$(ALL_EQS))
 
 all: $(ALL_EQS) ## Create all equations
 
@@ -26,10 +27,6 @@ all: $(ALL_EQS) ## Create all equations
 %/contracted:
 	mkdir -p $@
 	tools/create-contracted-eom.sh $* $(FD_OUTPUT)
-
-ccsd/intermediates:
-	mkdir -p $@
-	ccsd/scripts/create-intermediates.sh ccsd $(FD_OUTPUT)
 
 %/intermediates:
 	mkdir -p $@
@@ -55,6 +52,4 @@ help: ## Prints help for targets with comments
 		};' \
 		$(MAKEFILE_LIST)
 
-clean:
-	-git clean -xf
-	-git clean -xf
+clean: $(CLEAN_TARGETS)

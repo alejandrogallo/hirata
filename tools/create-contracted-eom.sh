@@ -1,12 +1,7 @@
 #! /usr/bin/env bash
 
 SCRIPT_DIR=$(readlink -f $(dirname $0))
-hirata=${SCRIPT_DIR}/../hirata.py
-
-if [[ ! -f ${hirata} ]]; then
-  echo "You need the ${hirata} script to continue"
-  exit 1
-fi
+hirata=hirata
 
 if [[ -z $1 ]]; then
   echo "Usage: $(basename $0) <folder-with-L-and-R-equations>"
@@ -20,19 +15,19 @@ folder=contracted
 
 set -x
 
-${hirata} --fock \
+${hirata} \
   -f L1.in \
   -o ${folder}/L1HR1_from_L1.cpp \
   --prepend 'energy[""] = ' --contract-with R --with-indices ai   &&
-${hirata} --fock \
+${hirata} \
   -f L2.in \
   -o ${folder}/L2HR2_from_L2.cpp \
   --prepend 'energy[""] = ' --contract-with R --with-indices abij &&
-${hirata} --fock \
+${hirata} \
   -f R1.in \
   -o ${folder}/L1HR1_from_R1.cpp \
   --prepend 'energy[""] = ' --contract-with L --with-indices ia   &&
-${hirata} --fock \
+${hirata} \
   -f R2.in \
   -o ${folder}/L2HR2_from_R2.cpp \
   --prepend 'energy[""] = ' --contract-with L --with-indices ijab

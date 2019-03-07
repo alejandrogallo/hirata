@@ -1,12 +1,7 @@
 #! /usr/bin/env bash
 
 SCRIPT_DIR=$(readlink -f $(dirname $0))
-hirata=${SCRIPT_DIR}/../hirata.py
-
-if [[ ! -f ${hirata} ]]; then
-  echo "You need the ${hirata} script to continue"
-  exit 1
-fi
+hirata=hirata
 
 if [[ -z $1 ]]; then
   echo "Usage: $(basename $0) <folder-with-L-and-R-equations>"
@@ -24,7 +19,7 @@ equations=$(ls *.in)
 set -x
 
 for equation in ${equations} ; do
-  ${hirata} --fock \
+  ${hirata} \
     -f ${equation} \
     --python-tuples-out ${folder}/$(basename ${equation} .in).py
 done

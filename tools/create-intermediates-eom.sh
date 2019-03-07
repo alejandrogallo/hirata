@@ -1,12 +1,7 @@
 #! /usr/bin/env bash
 
 SCRIPT_DIR=$(readlink -f $(dirname $0))
-hirata=${SCRIPT_DIR}/../hirata.py
-
-if [[ ! -f ${hirata} ]]; then
-  echo "You need the ${hirata} script to continue"
-  exit 1
-fi
+hirata=hirata
 
 if [[ -z $1 ]]; then
   echo "Usage: $(basename $0) <folder-with-L-and-R-equations>"
@@ -20,22 +15,22 @@ folder=intermediates
 
 set -x
 
-${hirata} --fock \
+${hirata} \
   -f L1.in \
   -o ${folder}/L1H.cpp \
   --with-intermediates LH \
   --with-indices ia   &&
-${hirata} --fock \
+${hirata} \
   -f L2.in \
   -o ${folder}/L2H.cpp \
   --with-intermediates LH \
   --with-indices ijab &&
-${hirata} --fock \
+${hirata} \
   -f R1.in \
   -o ${folder}/HR1.cpp \
   --with-intermediates HR \
   --with-indices ai   &&
-${hirata} --fock \
+${hirata} \
   -f R2.in \
   -o ${folder}/HR2.cpp \
   --with-intermediates HR \

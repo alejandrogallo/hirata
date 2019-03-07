@@ -27,13 +27,13 @@ folder=intermediates
 
 set -x
 
-${hirata} --fock \
+${hirata} \
   -f T1.in \
   -o ${folder}/R1.cpp \
   --with-intermediates R \
   --with-indices ai   &&
 
-${hirata} --fock \
+${hirata} \
   -f T2.in \
   -o ${folder}/R2.cpp \
   --with-intermediates R \

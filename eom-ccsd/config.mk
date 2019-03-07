@@ -18,3 +18,9 @@ eom-ccd/%.in: eom-ccsd/%.in
 
 eom-ccd: $(eom_ccd_TARGETS) ## Create eom-ccd equations
 eom-ccsd: $(eom_ccsd_TARGETS) ## Create eom-ccsd equations
+
+clean-eom-ccsd:
+	-@rm -v $(eom_ccsd_TARGETS)
+
+clean-eom-ccd:
+	-@rm -v $(eom_ccd_TARGETS)
