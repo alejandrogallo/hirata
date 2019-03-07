@@ -1,7 +1,9 @@
 include mbpt1/config.mk
 include mbpt2/config.mk
+
 include ccsd/config.mk
 include eom-ccsd/config.mk
+
 include ccsdt/config.mk
 include eom-ccsdt/config.mk
 
