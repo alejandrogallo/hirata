@@ -24,3 +24,20 @@ clean-eom-ccsd:
 
 clean-eom-ccd:
 	-@rm -rv $(eom_ccd_TARGETS)
+
+%/diagonal:
+	mkdir -p $@
+	tools/create-diagonal-eom.sh $* $(FD_OUTPUT)
+
+%/factors:
+	mkdir -p $@
+	tools/create-factors.sh $* $(FD_OUTPUT)
+
+%/contracted:
+	mkdir -p $@
+	tools/create-contracted-eom.sh $* $(FD_OUTPUT)
+
+%/intermediates:
+	mkdir -p $@
+	tools/create-intermediates-eom.sh $* $(FD_OUTPUT)
+

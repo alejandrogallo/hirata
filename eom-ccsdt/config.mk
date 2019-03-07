@@ -10,3 +10,20 @@ eom-ccsdt: $(eom_ccsdt_TARGETS) ## Create eom-ccsdt equations
 
 clean-eom-ccsdt:
 	-@rm -v $(eom_ccsdt_TARGETS)
+
+%/diagonal:
+	mkdir -p $@
+	tools/create-diagonal-eom.sh $* $(FD_OUTPUT)
+
+%/factors:
+	mkdir -p $@
+	tools/create-factors.sh $* $(FD_OUTPUT)
+
+%/contracted:
+	mkdir -p $@
+	tools/create-contracted-eom.sh $* $(FD_OUTPUT)
+
+%/intermediates:
+	mkdir -p $@
+	tools/create-intermediates-eom.sh $* $(FD_OUTPUT)
+

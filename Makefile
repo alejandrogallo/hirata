@@ -18,22 +18,6 @@ CLEAN_TARGETS = $(patsubst %,clean-%,$(ALL_EQS))
 
 all: $(ALL_EQS) ## Create all equations
 
-%/diagonal:
-	mkdir -p $@
-	tools/create-diagonal-eom.sh $* $(FD_OUTPUT)
-
-%/factors:
-	mkdir -p $@
-	tools/create-factors.sh $* $(FD_OUTPUT)
-
-%/contracted:
-	mkdir -p $@
-	tools/create-contracted-eom.sh $* $(FD_OUTPUT)
-
-%/intermediates:
-	mkdir -p $@
-	tools/create-intermediates-eom.sh $* $(FD_OUTPUT)
-
 %.cpp: %.in
 	hirata -o $@ -f $< $(FD_OUTPUT)
 
