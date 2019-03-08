@@ -1,4 +1,3 @@
-#  Hirata equations converter
 [![Build Status](https://travis-ci.org/alejandrogallo/hirata.svg?branch=master)](https://travis-ci.org/alejandrogallo/hirata)
 
 Hit
