@@ -1,29 +1,15 @@
-include mbpt1/config.mk
-include mbpt2/config.mk
-
-include ccsd_t/config.mk
-
-include ccsd/config.mk
-include eom-ccsd/config.mk
-
-include ccsdt/config.mk
-include eom-ccsdt/config.mk
-
-include cisd/config.mk
-
-ifdef QUIET
-FD_OUTPUT = >> log.txt 2>&1
-endif
-
 .DEFAULT_GOAL = help
 
-ALL_EQS = ccsd ccsdt eom-ccsd eom-ccsdt lambda-ccsd mbpt1 mbpt2
+ALL_EQS = $(shell find -name config.mk | xargs dirname | sed 's/[.].//')
 CLEAN_TARGETS = $(patsubst %,clean-%,$(ALL_EQS))
+CONFIG_FILES = $(patsubst %,./%/config.mk,$(ALL_EQS))
+
+include $(CONFIG_FILES)
 
 all: $(ALL_EQS) ## Create all equations
 
 %.cpp: %.in
-	hirata -o $@ -f $< $(FD_OUTPUT)
+	hirata -o $@ -f $<
 
 test:
 	python -m unittest discover tests/

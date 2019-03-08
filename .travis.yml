@@ -11,7 +11,7 @@ python:
 
 script:
 - python -m pytest hirata/ tests/ --cov=hirata
-- make ccsd eom-ccsd ccsdt eom-ccsdt mbpt1 mbpt2
+- make all
 
 install:
 - pip install .
