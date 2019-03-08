@@ -1,11 +1,15 @@
 include mbpt1/config.mk
 include mbpt2/config.mk
 
+include ccsd_t/config.mk
+
 include ccsd/config.mk
 include eom-ccsd/config.mk
 
 include ccsdt/config.mk
 include eom-ccsdt/config.mk
+
+include cisd/config.mk
 
 ifdef QUIET
 FD_OUTPUT = >> log.txt 2>&1
