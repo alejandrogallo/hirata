@@ -58,11 +58,6 @@ def process_file(args):
             ]
         result_lines += lines
         result_lines.append("")
-    if args.no_comments:
-        logger.debug("Getting rid of comments")
-        result_lines = [
-            li for li in result_lines if not re.match(r"^//.*$", li)
-        ]
     return result_lines
 
 
@@ -79,12 +74,6 @@ def main():
         help="Output file (hirata.out)",
         default="hirata.cpp",
         action="store"
-    )
-
-    parser.add_argument(
-        "--no-comments",
-        help="Strip out the comments",
-        action="store_true"
     )
 
     parser.add_argument(

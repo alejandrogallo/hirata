@@ -2,8 +2,12 @@ import logging
 from hirata import HirataLine
 from hirata.utils import *
 from hirata.cc4s import *
+from hirata.main import main
 import copy
 logging.basicConfig(level=logging.DEBUG)
+
+def test_main():
+    pass
 
 def test_1():
 
