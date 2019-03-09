@@ -19,7 +19,7 @@ def test_1():
     assert h_line is not None
     assert len(h_line.get_prefactors()) == 4
     assert len(h_line.get_postfactors()) == 2
-    assert h_line.get_summation_indices() == None
+    assert h_line.get_summation_indices() == ''
     assert set(h_line.get_free_indices().split()) == set("p1 h4 p2 h3".split())
     assert get_hp_combination(h_line.get_postfactors()[1]) == "hp"
 

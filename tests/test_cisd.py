@@ -13,6 +13,7 @@ def test_E():
     hl_singles = HirataLine(lines[0])
     hl_doubles = HirataLine(lines[1])
     assert(hl_singles is not None and hl_doubles is not None)
+
     assert(hl_singles.free_indices == "")
     assert(hl_singles.summation_indices == " h1 p2 ")
     assert(hl_singles.prefactors == ["+ 1.0 "])
