@@ -3,7 +3,6 @@ eom_ccsd_TARGETS = \
 $(patsubst %.in,%.cpp,$(eom_ccsd_SOURCES)) \
 eom-ccsd/contracted \
 eom-ccsd/intermediates \
-eom-ccsd/factors \
 eom-ccsd/diagonal \
 
 eom_ccd_SOURCES = $(patsubst eom-ccsd%,eom-ccd%,$(eom_ccsd_SOURCES))
@@ -28,10 +27,6 @@ clean-eom-ccd:
 %/diagonal:
 	mkdir -p $@
 	tools/create-diagonal-eom.sh $* $(FD_OUTPUT)
-
-%/factors:
-	mkdir -p $@
-	tools/create-factors.sh $* $(FD_OUTPUT)
 
 %/contracted:
 	mkdir -p $@
