@@ -6,7 +6,7 @@ from .utils import get_tensor_name_with_indices
 import re
 import sys
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 logging.basicConfig(filename="hirata.log", level=logging.DEBUG)
 
 
@@ -17,7 +17,6 @@ def process_file(args):
     indices = None
     fd = open(args.file)
     for line in fd:
-        print("")
         h_line = HirataLine(line)
         cc4s_line = Cc4sLine(h_line)
         lines = cc4s_line.to_cpp()
