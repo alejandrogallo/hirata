@@ -63,6 +63,9 @@ class HirataLine(object):
                 self.summation_indices = m.group(1)
                 self.logger.debug("Summation indices = %s", self.summation_indices)
                 return self.summation_indices
+            else:
+                self.summation_indices = ""
+                return self.summation_indices
 
     def get_postfactors(self):
         """If postfactors were not parsed before, parse postfactors from raw_line.
