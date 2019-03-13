@@ -9,6 +9,8 @@ include eom-ccsd/config.mk
 include ccsdt/config.mk
 include eom-ccsdt/config.mk
 
+include ccsdtq/config.mk
+
 include cisd/config.mk
 
 ifdef QUIET
